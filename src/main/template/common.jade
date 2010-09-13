@@ -1,0 +1,17 @@
+- import Helper._
+logRotator
+  daysToKeep 60
+  numToKeep -1
+  artifactDaysToKeep -1
+  artifactNumToKeep -1
+properties
+  - project.scm match
+    - case x:GitHub =>
+      'com.coravy.hudson.plugins.github.GithubProjectProperty'
+        projectUrl= with_trailing_slash(project.scm.web_url.get)
+    - case _ =>
+- project.scm match
+  - case x:Git => 
+    != capture(include("git.jade"))
+  - case x:Subversion => 
+    != capture(include("subversion.jade"))

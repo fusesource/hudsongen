@@ -1,0 +1,41 @@
+!!! XML
+matrix-project
+  actions
+  description
+  keepDependencies false
+  != capture(include("common.jade"))
+  canRoam true
+  disabled false
+  blockBuildWhenUpstreamBuilding false
+  triggers.vector
+    'hudson.triggers.SCMTrigger'
+      spec @weekly
+  concurrentBuild false
+  axes
+    'hudson.matrix.JDKAxis'
+      name jdk
+      values
+        - for( jdk <- project.jdks ) 
+          string= jdk
+    'hudson.matrix.LabelAxis'
+      name label
+      values
+        - for( label <- project.labels ) 
+          string= label
+  builders
+    'hudson.tasks.Maven'
+      targets -V -B -fae clean install
+      mavenName maven-2.2.1
+      usePrivateRepository false
+  publishers
+    'hudson.tasks.junit.JUnitResultArchiver'
+      testResults **/target/surefire-reports/*.xml
+      keepLongStdio false
+      testDataPublishers
+  runSequentially false
+  buildWrappers
+    'hudson.plugins.build__timeout.BuildTimeoutWrapper'
+      timeoutMinutes= project.timeout
+      failBuild false
+    'matrixtieparent.BuildWrapperMtp'
+      labelName master

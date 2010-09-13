@@ -1,0 +1,39 @@
+- val scm = project.scm.asInstanceOf[Git]
+- import Helper._
+- import scm._
+scm(class="hudson.plugins.git.GitSCM")
+  configVersion 1
+  remoteRepositories
+    'org.spearce.jgit.transport.RemoteConfig'
+      string origin
+      int 5
+      string fetch
+      string +refs/heads/*:refs/remotes/origin/*
+      string receivepack
+      string git-upload-pack
+      string uploadpack
+      string git-upload-pack
+      string url
+      string= url
+      string tagopt
+      string
+  branches
+    - for ( branch <- branches )
+      'hudson.plugins.git.BranchSpec'
+        name= branch
+  localBranch
+  mergeOptions
+  doGenerateSubmoduleConfigurations false
+  authorOrCommitter false
+  clean false
+  wipeOutWorkspace false
+  buildChooser(class="hudson.plugins.git.util.DefaultBuildChooser")
+  gitTool Default
+  - for ( url <- web_url )
+    - if ( url.startsWith("http://github.com"))
+      browser(class="hudson.plugins.git.browser.GithubWeb")
+        url= with_trailing_slash(url)
+  submoduleCfg.list
+  relativeTargetDir
+  excludedRegions
+  excludedUsers

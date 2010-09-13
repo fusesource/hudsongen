@@ -1,0 +1,14 @@
+- val scm = project.scm.asInstanceOf[Subversion]
+- import scm._
+scm(class="hudson.scm.SubversionSCM")
+  locations
+    'hudson.scm.SubversionSCM_-ModuleLocation'
+      remote= url 
+      local= local
+  useUpdate true
+  doRevert true
+  excludedRegions
+  includedRegions
+  excludedUsers
+  excludedRevprop
+  excludedCommitMessages
