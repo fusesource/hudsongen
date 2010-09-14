@@ -18,7 +18,7 @@ object Main {
     generate(github("chirino", "mvnplugins"))
     generate(github("chirino", "rmiviajms"))
     generate(github("chirino", "jansi"))
-    generate(github("gnodet", "org.eclipse.mylyn").git(_.branches("origin")))
+    generate(github("gnodet", "wikitext").git(_.branches("origin")))
     
     generate(forge_git("jansi"))
     generate(forge_git("console"))
