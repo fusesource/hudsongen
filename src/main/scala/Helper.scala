@@ -103,7 +103,7 @@ object Helper {
   
   private def render( template:String, attributes: Map[String,Any]) = {
     val buffer = new StringWriter()
-    val context = new DefaultRenderContext(engine, new PrintWriter(buffer))
+    val context = new DefaultRenderContext(null, engine, new PrintWriter(buffer))
     for ((key, value) <- attributes) {
       context.attributes(key) = value
     }
