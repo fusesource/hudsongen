@@ -25,14 +25,14 @@ object Main {
     generate(forge_git("mop"))
 
     // ActiveMQ Branches
-    generate(activemq("trunk-fusesource"))
-    generate(activemq("5.4-fusesource"))
-    generate(subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse"))
+    generate(activemq("trunk-fusesource").timeout(2*60))
+    generate(activemq("5.4-fusesource").timeout(2*60))
+    generate(subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(2*60))
 
     // Camel Branches
-    generate(subversion("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk"))
-    generate(subversion("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse"))
-    generate(subversion("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse"))
+    generate(subversion("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk").timeout(3*60))
+    generate(subversion("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse").timeout(3*60))
+    generate(subversion("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse").timeout(3*60))
 
     // CXF Branches
     generate(subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk"))
@@ -52,10 +52,10 @@ object Main {
     
     generate(smx_utils("trunk"))
 
-    generate(smx_components("trunk"))
-    generate(smx_components("components-2010.02.0-fuse"))
-    generate(smx_components("components-2010.01.0-fuse"))
-    generate(smx_components("components-2009.01.x"))
+    generate(smx_components("trunk").timeout(2*60))
+    generate(smx_components("components-2010.02.0-fuse").timeout(2*60))
+    generate(smx_components("components-2010.01.0-fuse").timeout(2*60))
+    generate(smx_components("components-2009.01.x").timeout(2*60))
 
     // The specks don't have tests do don't need a nightly.
     var specs = subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk")
