@@ -13,8 +13,8 @@ maven2-moduleset
     'hudson.triggers.SCMTrigger'
       spec */15 * * * *
   concurrentBuild false
-  goals -V -B -fae clean install
-  defaultGoals install #{build.mavenOptions.goalsArguments}
+  goals -V -B -fae clean install#{build.maven.goalsArguments}
+  defaultGoals install#{build.maven.goalsArguments}
   mavenOpts -Xmx800m -XX:MaxPermSize=192m
   aggregatorStyleBuild true
   incrementalBuild false

@@ -22,17 +22,20 @@ class Subversion(val url:String, val local:String) extends SCM {
   def web_url(value:Option[String]): this.type = { web_url = value; this}
 }
 
-case class MavenOptions(profiles: List[String] = Nil) {
+case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String] = Nil) {
 
   /**
-   * Returns the command line argument for profiles
+   * Returns the command line argument for the given goals and profiles
    */
-  def goalsArguments = profiles.map("-P" + _).mkString(" ")
+  def goalsArguments = (goals.map(" " + _) ++ profiles.map(" -P" + _)).mkString("")
 }
 
 case class Build(name: String) {
-  var mavenOptions = MavenOptions()
-  def mavenOptions(value: MavenOptions): this.type = { mavenOptions = value; this }
+  var template: String = name + ".jade"
+  def template(value: String): this.type = { template = value; this }
+
+  var maven = new MavenOptions()
+  def maven(value: MavenOptions): this.type = { maven = value; this }
 }
 
 case class Project(val name:String, val scm:SCM) {
@@ -156,8 +159,7 @@ abstract class Helper {
   }
   
   def build(project:Project, build: Build): Unit = {
-    val name = build.name
-    job(project.name + "-" + name, render(name + ".jade", Map("project" -> project, "build" -> build)))
+    job(project.name + "-" + build.name, render(build.template, Map("project" -> project, "build" -> build)))
   }
 
   /////////////////////////////////////////////////////////////////////
