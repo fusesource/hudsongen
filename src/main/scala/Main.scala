@@ -59,9 +59,11 @@ object Main extends Helper {
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform)
   }
   
-  def activemq(branch:String) = new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch)))
+  def activemq(branch:String) = 
+    add(new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch))))
   
-  def karaf(branch:String) = new Project("karaf-"+branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch)))
+  def karaf(branch:String) = 
+    add(new Project("karaf-"+branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
 
   val smx_base = "http://fusesource.com/forge/svn/fuseesb"
   def smx4_nmr(branch:String) =  branch match {
