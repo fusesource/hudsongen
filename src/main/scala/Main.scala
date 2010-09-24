@@ -32,6 +32,9 @@ object Main extends Helper {
     // CXF Branches
     subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk")
     subversion("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse")
+    
+    // Karaf Branches
+    karaf("karaf-2.0.0-fuse")
 
     // ServiceMix Branches
     smx4_nmr("trunk")
@@ -57,6 +60,8 @@ object Main extends Helper {
   }
   
   def activemq(branch:String) = new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch)))
+  
+  def karaf(branch:String) = new Project("karaf-"+branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch)))
 
   val smx_base = "http://fusesource.com/forge/svn/fuseesb"
   def smx4_nmr(branch:String) =  branch match {
