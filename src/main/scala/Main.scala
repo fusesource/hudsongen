@@ -30,8 +30,8 @@ object Main extends Helper {
     subversion("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse").timeout(3*60)
 
     // CXF Branches
-    subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk")
-    subversion("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse")
+    subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk").timeout(2*60)
+    subversion("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse").timeout(2*60)
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
