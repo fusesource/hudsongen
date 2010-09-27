@@ -20,9 +20,9 @@ object Main extends Helper {
     forge_git("mop")
 
     // ActiveMQ Branches
-    activemq("trunk-fusesource").timeout(2*60)
-    activemq("5.4-fusesource").timeout(2*60)
-    subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(2*60)
+    activemq("trunk-fusesource").timeout(4*60)
+    activemq("5.4-fusesource").timeout(4*60)
+    subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(4*60)
 
     // Camel Branches
     subversion("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk").timeout(3*60)
