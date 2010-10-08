@@ -4,7 +4,10 @@ object Main extends Helper {
 
   protected def configure = {
     // Random Support Projects
-    github("scalate", "scalate").checkin.maven.profiles = List("download")
+    github("scalate", "scalate").using{ p =>
+      p.checkin.maven.profiles = List("download")
+      p.deploy.maven.profiles = List("download", "distro")
+    }
 
     github("chirino", "hawtdb")
     github("chirino", "hawtdispatch")
