@@ -49,7 +49,7 @@ object Main extends Helper {
     smx4_features("features-4.3.0-fuse").timeout(1*90)
     
     smx_maven_plugins("trunk")
-    smx_maven_plugins("maven-plugins-4.3.0-fusesource")
+    smx_maven_plugins("maven-plugins-4.3.0-fuse")
     
     smx_utils("trunk")
 
