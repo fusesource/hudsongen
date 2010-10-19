@@ -1,6 +1,6 @@
 # HudsonGen
 
-This project generates most of the Hudson configuration files for the FuseSource open source projects using [Scalate](http://scalate.fusesource.org/).
+This project generates most of the Hudson configuration files for the [FuseSource](http://fusesource.com/forge) open source projects using the [Scalate template engine](http://scalate.fusesource.org/).
 
 If you want to automatically create your Hudson configuration files for each of your projects using templates you might want to fork and adapt this project.
 
