@@ -3,7 +3,13 @@ import java.io._
 object Main extends Helper {
 
   protected def configure = {
-    // Random Support Projects
+    // FuseForge Projects
+    forge_git("jansi")
+    forge_git("console")
+    forge_git("mop")
+
+    github("fusesource", "wikitext").git(_.branches("origin"))
+
     github("scalate", "scalate").using{ p =>
       p.checkin.maven.profiles = List("download")
       p.deploy.maven.profiles = List("download", "distro")
@@ -16,12 +22,7 @@ object Main extends Helper {
     github("chirino", "mvnplugins")
     github("chirino", "rmiviajms")
     github("chirino", "jansi")
-    github("gnodet", "wikitext").git(_.branches("origin"))
     
-    forge_git("jansi")
-    forge_git("console")
-    forge_git("mop")
-
     // ActiveMQ Branches
     activemq("trunk-fusesource").timeout(4*60)
     activemq("5.4-fusesource").timeout(4*60)
