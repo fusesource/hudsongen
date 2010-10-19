@@ -29,4 +29,12 @@ For example our CI build for the HudsonGen project looks like this (so Hudson re
     /opt/sbt-0.7.4/sbt update
     /opt/sbt-0.7.4/sbt run /var/lib/hudson/jobs
     /var/lib/hudson/reload
+    
+    
+## How it works
 
+You define all the various projects from github or FuseForge in the [Main.scala](http://github.com/fusesource/hudsongen/blob/master/src/main/scala/Main.scala) file which defines all the metadata for your builds.
+
+The actual implementation detail of using Scalate templates is all done in [Helper.scala](http://github.com/fusesource/hudsongen/blob/master/src/main/scala/Helper.scala) and the [templates are here](http://github.com/fusesource/hudsongen/tree/master/src/main/template/).
+
+For further details see [Scalate Templates](http://scalate.fusesource.org/)
