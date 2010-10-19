@@ -35,7 +35,7 @@ matrix-project
   runSequentially false
   buildWrappers
     'hudson.plugins.build__timeout.BuildTimeoutWrapper'
-      timeoutMinutes= project.timeout
+      timeoutMinutes= project.platform.timeout
       failBuild false
     'matrixtieparent.BuildWrapperMtp'
       labelName master

@@ -25,5 +25,5 @@ maven2-moduleset
   publishers
   buildWrappers
     'hudson.plugins.build__timeout.BuildTimeoutWrapper'
-      timeoutMinutes= 30
+      timeoutMinutes= project.deploy.timeout
       failBuild false
