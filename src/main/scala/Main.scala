@@ -29,9 +29,9 @@ object Main extends Helper {
     subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(4*60)
 
     // Camel Branches
-    subversion("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk").timeout(5*60)
-    subversion("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse").timeout(5*60)
-    subversion("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse").timeout(5*60)
+    subversion("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk").timeout(6*60)
+    subversion("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse").timeout(6*60)
+    subversion("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse").timeout(6*60)
 
     // CXF Branches
     subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk").timeout(2*60)
