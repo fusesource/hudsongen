@@ -23,3 +23,10 @@ To generate the configuration files type the following into a console
 Where someDir is the directory name where you want the Hudson configuration files generated.
 
 Once you are happy with the look of your XML configuration files, you can run the HudsonGen build as a CI build on your Hudson machine.
+
+For example our CI build for the HudsonGen project looks like this (so Hudson reloads itself after a new build)
+
+    /opt/sbt-0.7.4/sbt update
+    /opt/sbt-0.7.4/sbt run /var/lib/hudson/jobs
+    /var/lib/hudson/reload
+
