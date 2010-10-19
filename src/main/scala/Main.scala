@@ -45,9 +45,9 @@ object Main extends Helper {
     smx4_nmr("nmr-1.2.0-fuse")
     smx4_nmr("nmr-1.3.0-fuse")
 
-    smx4_features("trunk")
-    smx4_features("features-4.2.0-fuse")
-    smx4_features("features-4.3.0-fuse")
+    smx4_features("trunk").timeout(1*60)
+    smx4_features("features-4.2.0-fuse").timeout(1*60)
+    smx4_features("features-4.3.0-fuse").timeout(1*60)
     
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.0-fusesource")
