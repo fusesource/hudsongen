@@ -86,8 +86,8 @@ object Main extends Helper {
       case "trunk" => subversion("smx4-features-trunk-fuse", smx_base+"/smx4/features/trunk")
       case branch => subversion("smx4-"+branch, smx_base+"/smx4/features/branches/"+branch)
     }
-    project.deploy.timeout(60)
-    project.timeout(75)
+    project.deploy.timeout(90)
+    project.timeout(90)
   }
   
   def smx_maven_plugins(branch:String) =  branch match {
