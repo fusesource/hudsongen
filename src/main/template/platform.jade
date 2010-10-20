@@ -26,7 +26,7 @@ matrix-project
     'hudson.tasks.Maven'
       targets -V -B -fae clean install
       mavenName maven-2.2.1
-      jvmOptions -Xmx800m -XX:MaxPermSize=192m
+      jvmOptions -Xmx1024m -XX:MaxPermSize=192m
       usePrivateRepository false
   publishers
     'hudson.tasks.junit.JUnitResultArchiver'
