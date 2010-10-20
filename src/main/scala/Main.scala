@@ -67,8 +67,8 @@ object Main extends Helper {
     add(new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch))))
     
   def camel(id: String, source: String) = {
-    val project = subversion(id, source).timeout(6*60)
-    project.deploy.timeout(2*60)
+    val project = subversion(id, source).timeout(8*60)
+    project.deploy.timeout(4*60)
     project
   }
   
