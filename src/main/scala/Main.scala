@@ -13,6 +13,7 @@ object Main extends Helper {
     github("scalate", "scalate").using{ p =>
       p.checkin.maven.profiles = List("download")
       p.deploy.maven.profiles = List("download", "distro")
+      p.deploy.timeout(45)
     }
 
     github("chirino", "hawtdb")
