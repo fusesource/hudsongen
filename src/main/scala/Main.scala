@@ -35,8 +35,8 @@ object Main extends Helper {
     camel("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse")
 
     // CXF Branches
-    subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk").timeout(2*60)
-    subversion("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse").timeout(2*60)
+    cxf("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk")
+    cxf("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse")
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
@@ -71,6 +71,13 @@ object Main extends Helper {
     val project = subversion(id, source).timeout(8*60)
     project.deploy.timeout(4*60)
     project
+  }
+  
+  def cxf(id: String, source: String) = {
+    subversion(id, source).using { project =>
+      project.timeout(2*60)
+      project.deploy.timeout(90)
+    }
   }
   
   def karaf(branch:String) = 
