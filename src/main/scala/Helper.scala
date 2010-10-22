@@ -38,6 +38,9 @@ case class Build(name: String) {
 
   var maven = new MavenOptions()
   def maven(value: MavenOptions): this.type = { maven = value; this }
+
+  var timeout = 60
+  def timeout(value: Int): this.type = {timeout = value; this}
 }
 
 case class Project(val name:String, val scm:SCM) {
@@ -48,8 +51,7 @@ case class Project(val name:String, val scm:SCM) {
   var labels = List("ubuntu","windows")
   def labels(values:String*): this.type = { labels = List(values: _*); this}
   
-  var timeout = 60
-  def timeout(value:Int): this.type = { timeout = value; this}
+  def timeout(value:Int): this.type = { checkin.timeout(value); platform.timeout(value); this }
 
   def git(proc: (Git)=>Unit): this.type = { proc(scm.asInstanceOf[Git]); this }
 
@@ -68,7 +70,7 @@ case class Project(val name:String, val scm:SCM) {
   // builds
   val checkin = Build("checkin")
   val platform = Build("platform")
-  val deploy = Build("deploy")
+  val deploy = Build("deploy").timeout(30)   // we avoid taking the full build timeout value as the default
 
   var builds: List[Build] = List(checkin, platform, deploy)
 
