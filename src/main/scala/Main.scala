@@ -4,7 +4,10 @@ object Main extends Helper {
 
   protected def configure = {
     // Random Support Projects
-    github("scalate", "scalate").checkin.maven.profiles = List("download")
+    github("scalate", "scalate").using{ p =>
+      p.checkin.maven.profiles = List("download")
+      p.deploy.maven.profiles = List("download", "distro")
+    }
 
     github("chirino", "hawtdb")
     github("chirino", "hawtdispatch")
@@ -20,18 +23,18 @@ object Main extends Helper {
     forge_git("mop")
 
     // ActiveMQ Branches
-    activemq("trunk-fusesource").timeout(2*60)
-    activemq("5.4-fusesource").timeout(2*60)
-    subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(2*60)
+    activemq("trunk-fusesource").timeout(4*60)
+    activemq("5.4-fusesource").timeout(4*60)
+    subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(4*60)
 
     // Camel Branches
-    subversion("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk").timeout(3*60)
-    subversion("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse").timeout(3*60)
-    subversion("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse").timeout(3*60)
+    subversion("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk").timeout(5*60)
+    subversion("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse").timeout(5*60)
+    subversion("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse").timeout(5*60)
 
     // CXF Branches
-    subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk")
-    subversion("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse")
+    subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk").timeout(2*60)
+    subversion("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse").timeout(2*60)
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
@@ -41,12 +44,12 @@ object Main extends Helper {
     smx4_nmr("nmr-1.2.0-fuse")
     smx4_nmr("nmr-1.3.0-fuse")
 
-    smx4_features("trunk")
-    smx4_features("features-4.2.0-fuse")
-    smx4_features("features-4.3.0-fuse")
+    smx4_features("trunk").timeout(1*90)
+    smx4_features("features-4.2.0-fuse").timeout(1*90)
+    smx4_features("features-4.3.0-fuse").timeout(1*90)
     
     smx_maven_plugins("trunk")
-    smx_maven_plugins("maven-plugins-4.3.0-fusesource")
+    smx_maven_plugins("maven-plugins-4.3.0-fuse")
     
     smx_utils("trunk")
 
@@ -55,13 +58,15 @@ object Main extends Helper {
     smx_components("components-2010.01.0-fuse").timeout(2*60)
     smx_components("components-2009.01.x").timeout(2*60)
 
-    // The specks don't have tests so don't need a nightly.
+    // The specs don't have tests so don't need a nightly.
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform)
   }
   
-  def activemq(branch:String) = new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch)))
+  def activemq(branch:String) = 
+    add(new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch))))
   
-  def karaf(branch:String) = new Project("karaf-"+branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch)))
+  def karaf(branch:String) = 
+    add(new Project("karaf-"+branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
 
   val smx_base = "http://fusesource.com/forge/svn/fuseesb"
   def smx4_nmr(branch:String) =  branch match {
