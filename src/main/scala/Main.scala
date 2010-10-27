@@ -16,7 +16,7 @@ object Main extends Helper {
     github("gnodet", "wikitext").git(_.branches("origin"))
     
     forge_git("jansi")
-    forge_git("console")
+    // forge_git("console")
     forge_git("mop")
 
     // ActiveMQ Branches
