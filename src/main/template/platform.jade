@@ -26,6 +26,7 @@ matrix-project
     'hudson.tasks.Maven'
       targets -V -B -fae clean install
       mavenName maven-2.2.1
+      jvmOptions -Xmx1024m -XX:MaxPermSize=192m
       usePrivateRepository false
   publishers
     'hudson.tasks.junit.JUnitResultArchiver'
@@ -35,7 +36,7 @@ matrix-project
   runSequentially false
   buildWrappers
     'hudson.plugins.build__timeout.BuildTimeoutWrapper'
-      timeoutMinutes= project.timeout
+      timeoutMinutes= project.platform.timeout
       failBuild false
     'matrixtieparent.BuildWrapperMtp'
       labelName master

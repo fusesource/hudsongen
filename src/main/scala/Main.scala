@@ -3,10 +3,18 @@ import java.io._
 object Main extends Helper {
 
   protected def configure = {
-    // Random Support Projects
+    // FuseForge Projects
+    forge_git("jansi")
+    // forge_git("console")
+    forge_git("mop")
+    forge_git("ridersource")
+
+    github("fusesource", "wikitext").git(_.branches("origin"))
+
     github("scalate", "scalate").using{ p =>
       p.checkin.maven.profiles = List("download")
       p.deploy.maven.profiles = List("download", "distro")
+      p.deploy.timeout(45)
     }
 
     github("chirino", "hawtdb")
@@ -16,11 +24,6 @@ object Main extends Helper {
     github("chirino", "mvnplugins")
     github("chirino", "rmiviajms")
     github("chirino", "jansi")
-    github("gnodet", "wikitext").git(_.branches("origin"))
-    
-    forge_git("jansi")
-    // forge_git("console")
-    forge_git("mop")
 
     // ActiveMQ Branches
     activemq("trunk-fusesource").timeout(4*60)
@@ -28,13 +31,14 @@ object Main extends Helper {
     subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(4*60)
 
     // Camel Branches
-    subversion("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk").timeout(5*60)
-    subversion("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse").timeout(5*60)
-    subversion("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse").timeout(5*60)
+    camel("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk")
+    camel("camel-2.4.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.4.0-fuse")
+    camel("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse")
+    camel("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse")
 
     // CXF Branches
-    subversion("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk").timeout(2*60)
-    subversion("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse").timeout(2*60)
+    cxf("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk")
+    cxf("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse")
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
@@ -64,6 +68,19 @@ object Main extends Helper {
   
   def activemq(branch:String) = 
     add(new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch))))
+    
+  def camel(id: String, source: String) = {
+    val project = subversion(id, source).timeout(8*60)
+    project.deploy.timeout(4*60)
+    project
+  }
+  
+  def cxf(id: String, source: String) = {
+    subversion(id, source).using { project =>
+      project.timeout(2*60)
+      project.deploy.timeout(90)
+    }
+  }
   
   def karaf(branch:String) = 
     add(new Project("karaf-"+branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
@@ -74,9 +91,13 @@ object Main extends Helper {
     case branch => subversion("smx4-"+branch, smx_base+"/smx4/nmr/branches/"+branch)
   }
 
-  def smx4_features(branch:String) =  branch match {
-    case "trunk" => subversion("smx4-features-trunk-fuse", smx_base+"/smx4/features/trunk")
-    case branch => subversion("smx4-"+branch, smx_base+"/smx4/features/branches/"+branch)
+  def smx4_features(branch:String) = {
+    val project = branch match {
+      case "trunk" => subversion("smx4-features-trunk-fuse", smx_base+"/smx4/features/trunk")
+      case branch => subversion("smx4-"+branch, smx_base+"/smx4/features/branches/"+branch)
+    }
+    project.deploy.timeout(90)
+    project.timeout(90)
   }
   
   def smx_maven_plugins(branch:String) =  branch match {
