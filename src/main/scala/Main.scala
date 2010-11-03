@@ -12,8 +12,8 @@ object Main extends Helper {
     github("fusesource", "wikitext").git(_.branches("origin"))
 
     github("scalate", "scalate").mavenName("maven-3.0").using{ p =>
-      p.deploy.maven.profiles = List("download", "distro")
-      p.checkin.maven.profiles = List("download")
+      p.deploy.maven.profiles = List("distro")
+      p.checkin.maven.profiles = List("distro")
       p.deploy.timeout(45)
     }
 
