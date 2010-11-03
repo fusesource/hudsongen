@@ -5,15 +5,15 @@ object Main extends Helper {
   protected def configure = {
     // FuseForge Projects
     forge_git("jansi")
-    forge_git("console")
+    // forge_git("console")
     forge_git("mop")
     forge_git("ridersource")
 
     github("fusesource", "wikitext").git(_.branches("origin"))
 
     github("scalate", "scalate").mavenName("maven-3.0").using{ p =>
-      p.checkin.maven.profiles = List("download")
       p.deploy.maven.profiles = List("download", "distro")
+      p.checkin.maven.profiles = List("download")
       p.deploy.timeout(45)
     }
 
@@ -24,14 +24,18 @@ object Main extends Helper {
     github("chirino", "mvnplugins")
     github("chirino", "rmiviajms")
     github("chirino", "jansi")
-    
+
     // ActiveMQ Branches
     activemq("trunk-fusesource").timeout(4*60)
     activemq("5.4-fusesource").timeout(4*60)
     subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(4*60)
 
+    // Apollo 
+    subversion("activemq-apollo-trunk", "https://svn.apache.org/repos/asf/activemq/activemq-apollo/trunk")
+
     // Camel Branches
     camel("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk")
+    camel("camel-2.4.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.4.0-fuse")
     camel("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse")
     camel("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse")
 
@@ -47,9 +51,9 @@ object Main extends Helper {
     smx4_nmr("nmr-1.2.0-fuse")
     smx4_nmr("nmr-1.3.0-fuse")
 
-    smx4_features("trunk")
-    smx4_features("features-4.2.0-fuse")
-    smx4_features("features-4.3.0-fuse")
+    smx4_features("trunk").timeout(1*90)
+    smx4_features("features-4.2.0-fuse").timeout(1*90)
+    smx4_features("features-4.3.0-fuse").timeout(1*90)
     
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.0-fuse")
