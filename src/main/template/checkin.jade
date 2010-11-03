@@ -15,6 +15,7 @@ maven2-moduleset
   concurrentBuild false
   goals -V -B -fae clean install#{build.maven.goalsArguments}
   defaultGoals install#{build.maven.goalsArguments}
+  mavenName #{build.maven.name}
   mavenOpts -Xmx1024m -XX:MaxPermSize=192m
   aggregatorStyleBuild true
   incrementalBuild false

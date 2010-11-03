@@ -11,13 +11,13 @@ object Main extends Helper {
 
     github("fusesource", "wikitext").git(_.branches("origin"))
 
-    github("scalate", "scalate").using{ p =>
+    github("scalate", "scalate").mavenName("maven-3.0").using{ p =>
       p.checkin.maven.profiles = List("download")
       p.deploy.maven.profiles = List("download", "distro")
       p.deploy.timeout(45)
     }
 
-    github("chirino", "hawtdb")
+    github("chirino .", "hawtdb")
     github("chirino", "hawtdispatch")
     github("chirino", "hawtjni")
     github("chirino", "hawtbuf")
