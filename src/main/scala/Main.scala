@@ -6,6 +6,14 @@ object Main extends Helper {
     // FuseForge Projects
     forge_git("jansi")
     // forge_git("console")
+    forge_git("insight").using{ p =>
+/*
+      p.checkin.maven.profiles = List("m2")
+      p.deploy.maven.profiles = List("m2")
+      p.platform.maven.profiles = List("m2")
+*/
+    }
+    
     forge_git("mop")
     forge_git("ridersource")
 
