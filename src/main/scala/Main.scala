@@ -130,6 +130,6 @@ object Main extends Helper {
     case branch => subversion("smx-"+branch, smx_base+"/components/branches/"+branch)
   }
 
-  def smx3(version:String) = subversion("smx-" + version, smx_base + "/branches/servicmix-" + version)
+  def smx3(version:String) = subversion("smx-" + version, smx_base + "/branches/servicemix-" + version)
 
 }
