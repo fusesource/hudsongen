@@ -77,8 +77,8 @@ object Main extends Helper {
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform)
 
     // ServiceMix 3
-    smx3("servicemix-3.4.0-fuse").timeout(2*60)
-    smx3("servicemix-3.5.0-fuse").timeout(2*60)
+    smx3("3.4.0-fuse").timeout(2*60)
+    smx3("3.5.0-fuse").timeout(2*60)
   }
   
   def activemq(branch:String) = 
@@ -130,8 +130,6 @@ object Main extends Helper {
     case branch => subversion("smx-"+branch, smx_base+"/components/branches/"+branch)
   }
 
-  def smx3(branch:String) =  branch match {
-    case branch => subversion("smx-"+branch, smx_base+"/branches/"+branch)
-  }
+  def smx3(version:String) = subversion("smx-" + version, smx_base + "/branches/servicmix-" + version)
 
 }
