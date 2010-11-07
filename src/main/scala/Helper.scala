@@ -22,7 +22,7 @@ class Subversion(val url:String, val local:String) extends SCM {
   def web_url(value:Option[String]): this.type = { web_url = value; this}
 }
 
-case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String] = Nil) {
+case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String] = Nil, var name: String = "maven-2.2.1") {
 
   /**
    * Returns the command line argument for the given goals and profiles
@@ -59,6 +59,16 @@ case class Project(val name:String, val scm:SCM) {
   // Helper methods
 
   /**
+   * Sets the maven name for all the builds
+   */
+   def mavenName(name: String): this.type = {
+     for (b <- builds) {
+       b.maven.name = name
+     }
+     this
+   }  
+   
+   /**
    * Lets the project be configured using a block which avoids global variables
    * needing to be defined for each project, instead its a local scoped parameter
    */

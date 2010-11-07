@@ -6,17 +6,26 @@ object Main extends Helper {
     // FuseForge Projects
     forge_git("jansi")
     // forge_git("console")
+    forge_git("insight").using{ p =>
+      p.deploy.maven.profiles = List("distro")
+    }
+    
     forge_git("mop")
     forge_git("ridersource")
 
     github("fusesource", "wikitext").git(_.branches("origin"))
 
+    
+    // TODO maven-3.0 not supported yet in Hudson!
+    //github("scalate", "scalate").mavenName("maven-3.0").using{ p =>
     github("scalate", "scalate").using{ p =>
-      p.deploy.maven.profiles = List("distro")
+      p.checkin.maven.profiles = List("m2", "distro")
+      p.deploy.maven.profiles = List("m2", "distro")
+      p.platform.maven.profiles = List("m2", "distro")
       p.deploy.timeout(45)
     }
 
-    github("chirino", "hawtdb")
+    github("chirino .", "hawtdb")
     github("chirino", "hawtdispatch")
     github("chirino", "hawtjni")
     github("chirino", "hawtbuf")
@@ -66,6 +75,10 @@ object Main extends Helper {
 
     // The specs don't have tests so don't need a nightly.
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform)
+
+    // ServiceMix 3
+    smx3("3.4.0-fuse").timeout(2*60)
+    smx3("3.5.0-fuse").timeout(2*60)
   }
   
   def activemq(branch:String) = 
@@ -116,5 +129,7 @@ object Main extends Helper {
     case "trunk" => subversion("smx-components-trunk-fuse", smx_base+"/components/trunk")
     case branch => subversion("smx-"+branch, smx_base+"/components/branches/"+branch)
   }
+
+  def smx3(version:String) = subversion("smx-" + version, smx_base + "/branches/servicemix-" + version)
 
 }
