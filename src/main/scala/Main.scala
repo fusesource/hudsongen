@@ -30,7 +30,7 @@ object Main extends Helper {
     subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(4*60)
 
     // Apollo 
-    subversion("activemq-apollo-trunk", "https://svn.apache.org/repos/asf/activemq/activemq-apollo/trunk")
+    subversion("activemq-apollo-trunk", "https://svn.apache.org/repos/asf/activemq/activemq-apollo/trunk").removeBuild(_.deploy)
 
     // Camel Branches
     camel("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk")
