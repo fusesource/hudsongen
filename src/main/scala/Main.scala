@@ -50,6 +50,7 @@ object Main extends Helper {
     // CXF Branches
     cxf("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk")
     cxf("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse")
+    cxf("cxf-2.3.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.3.x-fuse")
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
