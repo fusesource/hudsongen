@@ -25,13 +25,13 @@ object Main extends Helper {
       p.deploy.timeout(45)
     }
 
-    github("chirino .", "hawtdb")
-    github("chirino", "hawtdispatch")
-    github("chirino", "hawtjni")
-    github("chirino", "hawtbuf")
-    github("chirino", "mvnplugins")
-    github("chirino", "rmiviajms")
-    github("chirino", "jansi")
+    github("fusesource", "hawtdb")
+    github("fusesource", "hawtdispatch")
+    github("fusesource", "hawtjni")
+    github("fusesource", "hawtbuf")
+    github("fusesource", "mvnplugins")
+    github("fusesource", "rmiviajms")
+    github("fusesource", "jansi")
 
     // ActiveMQ Branches
     activemq("trunk-fusesource").timeout(4*60)
