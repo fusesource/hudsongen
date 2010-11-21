@@ -68,6 +68,7 @@ object Main extends Helper {
     smx_maven_plugins("maven-plugins-4.3.0-fuse")
     
     smx_utils("trunk")
+    smx_utils("utils-1.3.0-fuse")    
 
     smx_components("trunk").timeout(2*60)
     smx_components("components-2010.02.0-fuse").timeout(2*60)
