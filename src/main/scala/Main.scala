@@ -60,6 +60,7 @@ object Main extends Helper {
     smx4_nmr("trunk")
     smx4_nmr("nmr-1.2.0-fuse")
     smx4_nmr("nmr-1.3.0-fuse")
+    esb_nmr("nmr-1.3.1-fuse")
 
     smx4_features("trunk").timeout(1*90)
     smx4_features("features-4.2.0-fuse").timeout(1*90)
@@ -75,8 +76,6 @@ object Main extends Helper {
     smx_components("components-2010.02.0-fuse").timeout(2*60)
     smx_components("components-2010.01.0-fuse").timeout(2*60)
     smx_components("components-2009.01.x").timeout(2*60)
-    
-    // starting with 2011.01.0-fuse, components are maintained in a git repo called 'esbcomponents'
     esb_components("components-2011.01.0-fuse")
 
     // The specs don't have tests so don't need a nightly.
@@ -104,12 +103,24 @@ object Main extends Helper {
     }
   }
   
+  /*
+   * Starting with FUSE ESB JBI Components 2011.01.0-fuse, branches are being maintained in this git repository
+   * instead of the old svn location.
+   */  
   def esb_components(branch: String) = {
     val project = new Project("smx-" + branch, 
                               new Git("ssh://git@forge.fusesource.com/esbcomponents.git", None, List(branch)))
     project.timeout(2*60)
     add(project)
   }
+  
+  /*
+   * Starting with FUSE ESB NMR 1.3.1-fuse, branches are being maintained in this git repository
+   * instead of the old svn location.
+   */
+  def esb_nmr(branch: String) =
+    add(new Project("smx4-" + branch, 
+                    new Git("ssh://git@forge.fusesource.com/esbnmr.git", None, List(branch))))
   
   def karaf(branch:String) = 
     add(new Project("karaf-"+branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
