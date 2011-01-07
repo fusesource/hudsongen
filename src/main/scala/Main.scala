@@ -54,6 +54,7 @@ object Main extends Helper {
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
+    karaf("karaf-2.1.x-fuse")
 
     // ServiceMix Branches
     smx4_nmr("trunk")
@@ -74,6 +75,9 @@ object Main extends Helper {
     smx_components("components-2010.02.0-fuse").timeout(2*60)
     smx_components("components-2010.01.0-fuse").timeout(2*60)
     smx_components("components-2009.01.x").timeout(2*60)
+    
+    // starting with 2011.01.0-fuse, components are maintained in a git repo called 'esbcomponents'
+    esb_components("components-2011.01.0-fuse")
 
     // The specs don't have tests so don't need a nightly.
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform)
@@ -98,6 +102,13 @@ object Main extends Helper {
       project.deploy.timeout(90)
       project.deploy.maven.profiles = List("everything")
     }
+  }
+  
+  def esb_components(branch: String) = {
+    val project = new Project("smx-" + branch, 
+                              new Git("ssh://git@forge.fusesource.com/esbcomponents.git", None, List(branch)))
+    project.timeout(2*60)
+    add(project)
   }
   
   def karaf(branch:String) = 
