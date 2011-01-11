@@ -16,7 +16,7 @@ maven2-moduleset
   goals -V -B -fae -Dtest=false -DfailIfNoTests=false clean deploy#{build.maven.goalsArguments}
   defaultGoals install#{build.maven.goalsArguments}
   mavenName #{build.maven.name}
-  mavenOpts -Xmx1024m -XX:MaxPermSize=192m
+  mavenOpts -Xmx1024m -XX:MaxPermSize=256m
   aggregatorStyleBuild true
   incrementalBuild false
   usePrivateRepository false
