@@ -62,9 +62,10 @@ object Main extends Helper {
     smx4_nmr("nmr-1.3.0-fuse")
     esb_nmr("nmr-1.3.1-fuse")
 
-    smx4_features("trunk").timeout(1*90)
-    smx4_features("features-4.2.0-fuse").timeout(1*90)
-    smx4_features("features-4.3.0-fuse").timeout(1*90)
+    smx4_features("trunk")
+    smx4_features("features-4.2.0-fuse")
+    smx4_features("features-4.3.0-fuse")
+    esb_features("features-4.3.1-fuse")
     
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.0-fuse")
@@ -102,6 +103,18 @@ object Main extends Helper {
       project.deploy.maven.profiles = List("everything")
     }
   }
+  
+  /*
+   * Starting with FUSE ESB 4.3.1-fuse, branches are being maintained in this git repository
+   * instead of the old svn location.
+   */  
+  def esb_features(branch: String) = {
+    val project = new Project("smx4-" + branch, 
+                              new Git("ssh://git@forge.fusesource.com/esbfeatures.git", None, List(branch)))
+    project.deploy.timeout(90)
+    project.timeout(90)
+    add(project)
+  }    
   
   /*
    * Starting with FUSE ESB JBI Components 2011.01.0-fuse, branches are being maintained in this git repository
