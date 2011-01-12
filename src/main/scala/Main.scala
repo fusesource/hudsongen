@@ -136,7 +136,7 @@ object Main extends Helper {
                     new Git("ssh://git@forge.fusesource.com/esbnmr.git", None, List(branch))))
   
   def karaf(branch:String) = 
-    add(new Project("karaf-"+branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
+    add(new Project(branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
 
   val smx_base = "http://fusesource.com/forge/svn/fuseesb"
   def smx4_nmr(branch:String) =  branch match {
