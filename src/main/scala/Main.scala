@@ -71,7 +71,8 @@ object Main extends Helper {
     smx_maven_plugins("maven-plugins-4.3.0-fuse")
     
     smx_utils("trunk")
-    smx_utils("utils-1.3.0-fuse")    
+    smx_utils("utils-1.3.0-fuse")
+    esb_utils("utils-1.3.1-fuse")
 
     smx_components("trunk").timeout(2*60)
     smx_components("components-2010.02.0-fuse").timeout(2*60)
@@ -134,6 +135,14 @@ object Main extends Helper {
   def esb_nmr(branch: String) =
     add(new Project("smx4-" + branch, 
                     new Git("ssh://git@forge.fusesource.com/esbnmr.git", None, List(branch))))
+
+  /*
+   * Starting with FUSE ESB Utils 1.3.1-fuse, branches are being maintained in this git repository
+   * instead of the old svn location.
+   */
+  def esb_utils(branch: String) =
+    add(new Project("smx-" + branch, 
+                    new Git("ssh://git@forge.fusesource.com/esbutils.git", None, List(branch))))                    
   
   def karaf(branch:String) = 
     add(new Project(branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
