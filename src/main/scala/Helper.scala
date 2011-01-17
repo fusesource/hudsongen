@@ -27,7 +27,7 @@ case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String
   /**
    * Returns the command line argument for the given goals and profiles
    */
-  def goalsArguments = text(goals, " ") + goals.mkString(" ") + text(profiles, " -P ") + profiles.mkString(",")
+  def goalsArguments = text(goals, " ") + goals.mkString(" ") + text(profiles, " -P") + profiles.mkString(",")
   
   protected def text[T](t: Traversable[T], notEmpty: String, empty: String = "") = if (t.isEmpty) empty else notEmpty
 }
