@@ -55,6 +55,7 @@ object Main extends Helper {
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
     karaf("karaf-2.1.x-fuse")
+    karaf("trunk-fuse")
 
     // ServiceMix Branches
     smx4_nmr("trunk")
