@@ -17,6 +17,7 @@ maven2-moduleset
   defaultGoals install#{build.maven.goalsArguments}
   mavenName #{build.maven.name}
   mavenOpts -Xmx1024m -XX:MaxPermSize=192m
+  rootPom #{build.maven.rootPom}
   aggregatorStyleBuild true
   incrementalBuild false
   usePrivateRepository false

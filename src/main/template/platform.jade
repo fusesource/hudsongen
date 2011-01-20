@@ -26,6 +26,7 @@ matrix-project
     'hudson.tasks.Maven'
       targets -V -B -fae clean install#{build.maven.goalsArguments}
       mavenName #{build.maven.name}
+      pom #{build.maven.rootPom}
       jvmOptions -Xmx1024m -XX:MaxPermSize=192m
       usePrivateRepository false
   publishers

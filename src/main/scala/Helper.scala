@@ -22,7 +22,7 @@ class Subversion(val url:String, val local:String) extends SCM {
   def web_url(value:Option[String]): this.type = { web_url = value; this}
 }
 
-case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String] = Nil, var name: String = "maven-2.2.1") {
+case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String] = Nil, var name: String = "maven-2.2.1", var rootPom : String = "pom.xml") {
 
   /**
    * Returns the command line argument for the given goals and profiles
@@ -30,6 +30,7 @@ case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String
   def goalsArguments = text(goals, " ") + goals.mkString(" ") + text(profiles, " -P") + profiles.mkString(",")
   
   protected def text[T](t: Traversable[T], notEmpty: String, empty: String = "") = if (t.isEmpty) empty else notEmpty
+
 }
 
 case class Build(name: String) {
