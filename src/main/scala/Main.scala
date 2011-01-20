@@ -59,7 +59,7 @@ object Main extends Helper {
 
     // Felix components
     felix("fuse-trunk", "configadmin")
-    felix("fuse-trunk", "eventadmin")
+    felix("fuse-trunk", "eventadmin/impl")
     felix("fuse-trunk", "framework")
 
     // ServiceMix Branches
