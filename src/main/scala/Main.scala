@@ -58,9 +58,9 @@ object Main extends Helper {
     karaf("karaf-trunk-fuse")
 
     // Felix components
-    felix("fuse-trunk", "configadmin")
-    felix("fuse-trunk", "eventadmin/impl")
-    felix("fuse-trunk", "framework")
+    felix("fuse-trunk", "configadmin", "configadmin")
+    felix("fuse-trunk", "eventadmin/impl", "eventadmin")
+    felix("fuse-trunk", "framework", "framework")
 
     // ServiceMix Branches
     smx4_nmr("trunk")
@@ -153,8 +153,8 @@ object Main extends Helper {
   def karaf(branch:String) = 
     add(new Project(branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
 
-  def felix(branch:String, comp:String) = {
-    val project = new Project("felix-" + comp + "-" + branch,
+  def felix(branch:String, comp:String, name:String) = {
+    val project = new Project("felix-" + name + "-" + branch,
 					          new Git("ssh://git@forge.fusesource.com/fuseosgi.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
 	add(project)
