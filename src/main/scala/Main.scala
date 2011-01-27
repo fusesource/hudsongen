@@ -66,7 +66,7 @@ object Main extends Helper {
     smx4_nmr("trunk")
     smx4_nmr("nmr-1.2.0-fuse")
     smx4_nmr("nmr-1.3.0-fuse")
-    esb_nmr("nmr-1.3.1-fuse")
+    esb_nmr("nmr-1.4.x-fuse")
 
     smx4_features("trunk")
     smx4_features("features-4.2.0-fuse")
