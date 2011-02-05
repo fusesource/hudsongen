@@ -43,6 +43,7 @@ object Main extends Helper {
 
     // Camel Branches
     camel("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk")
+    camel("camel-2.6.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.6.0-fuse")
     camel("camel-2.4.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.4.0-fuse")
     camel("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse")
     camel("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse")
