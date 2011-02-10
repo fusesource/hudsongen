@@ -107,7 +107,7 @@ object Main extends Helper {
   def cxf(id: String, source: String) = {
     subversion(id, source).using { project =>
       project.timeout(2*60)
-      project.deploy.timeout(90)
+      project.deploy.timeout(2*60)
       project.deploy.maven.profiles = List("everything")
     }
   }
