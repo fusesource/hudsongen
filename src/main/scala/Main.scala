@@ -108,7 +108,7 @@ object Main extends Helper {
     subversion(id, source).using { project =>
       project.timeout(2*60)
       project.deploy.timeout(2*60)
-      project.deploy.maven.profiles = List("everything")
+      project.deploy.maven.profiles = List("everything", "jaxws22")
     }
   }
   
