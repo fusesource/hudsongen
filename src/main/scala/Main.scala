@@ -15,10 +15,7 @@ object Main extends Helper {
 
     github("fusesource", "wikitext").git(_.branches("origin"))
 
-    
-    // TODO maven-3.0 not supported yet in Hudson!
-    //github("scalate", "scalate").mavenName("maven-3.0").using{ p =>
-    github("scalate", "scalate").using{ p =>
+    github("scalate", "scalate").mavenName("maven-3.0.2").using { p =>
       p.checkin.maven.profiles = List("m2", "distro")
       p.deploy.maven.profiles = List("m2", "distro")
       p.platform.maven.profiles = List("m2", "distro")
