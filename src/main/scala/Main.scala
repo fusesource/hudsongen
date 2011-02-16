@@ -39,16 +39,16 @@ object Main extends Helper {
     subversion("activemq-apollo-trunk", "https://svn.apache.org/repos/asf/activemq/activemq-apollo/trunk").mavenName("maven-3.0.2").removeBuild(_.deploy)
 
     // Camel Branches
-    camel("camel-trunk-fuse", "http://fusesource.com/forge/svn/fuseeip/trunk")
-    camel("camel-2.6.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.6.0-fuse")
-    camel("camel-2.4.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.4.0-fuse")
-    camel("camel-2.2.0-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-2.2.0-fuse")
-    camel("camel-1.x-fuse", "http://fusesource.com/forge/svn/fuseeip/branches/camel-1.x-fuse")
+    camel("trunk-fuse")
+    camel("2.6.0-fuse")
+    camel("2.4.0-fuse")
+    // camel("2.2.0-fuse") TODO
+    // camel("1.x-fuse") TODO
 
     // CXF Branches
-    cxf("cxf-trunk-fuse", "http://fusesource.com/forge/svn/fusesf/trunk")
-    cxf("cxf-2.2.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.2.x-fuse")
-    cxf("cxf-2.3.x-fuse", "http://fusesource.com/forge/svn/fusesf/branches/cxf-2.3.x-fuse")
+    // cxf("trunk-fuse") TODO
+    cxf("2.2.x-fuse")
+    cxf("2.3.x-fuse")
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
@@ -95,18 +95,19 @@ object Main extends Helper {
   def activemq(branch:String) = 
     add(new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch))))
     
-  def camel(id: String, source: String) = {
-    val project = subversion(id, source).timeout(8*60)
+  def camel(branch: String) = {
+    val project = new Project("camel-"+branch, new Git("ssh://git@forge.fusesource.com/camel.git", None, List(branch)))
+    project.timeout(8*60)
     project.deploy.timeout(4*60)
-    project
+    add(project)
   }
   
-  def cxf(id: String, source: String) = {
-    subversion(id, source).using { project =>
-      project.timeout(2*60)
-      project.deploy.timeout(2*60)
-      project.deploy.maven.profiles = List("everything", "jaxws22")
-    }
+  def cxf(branch: String) = {
+    val project = new Project("cxf-"+branch, new Git("ssh://git@forge.fusesource.com/cxf.git", None, List(branch)))
+    project.timeout(2*60)
+    project.deploy.timeout(2*60)
+    project.deploy.maven.profiles = List("everything", "jaxws22")
+    add(project)
   }
   
   /*
