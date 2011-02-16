@@ -33,12 +33,18 @@ object Main extends Helper {
     github("fusesource", "jansi")
 
     // ActiveMQ Branches
-    activemq("trunk-fusesource").timeout(4*60)
-    activemq("5.4-fusesource").timeout(4*60)
-    subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse").timeout(4*60)
+    activemq("trunk-fusesource")
+    activemq("5.4-fusesource")
+    subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse") using { p=>
+      p.timeout(4*60)
+      p.deploy.timeout(60)
+    }
 
     // Apollo 
-    subversion("activemq-apollo-trunk", "https://svn.apache.org/repos/asf/activemq/activemq-apollo/trunk").mavenName("maven-3.0.2").removeBuild(_.deploy)
+    subversion("activemq-apollo-trunk", "https://svn.apache.org/repos/asf/activemq/activemq-apollo/trunk") using { p=>
+      p.mavenName("maven-3.0.2")
+      p.removeBuild(_.deploy)
+    }
 
     // Camel Branches
     camel("trunk-fuse")
@@ -94,8 +100,13 @@ object Main extends Helper {
     smx3("3.5.0-fuse").timeout(2*60)
   }
   
-  def activemq(branch:String) = 
-    add(new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch))))
+  def activemq(branch:String) =  {
+    val project = new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch)))
+    project.timeout(4*60)
+    project.deploy.timeout(60)
+    add(project)
+  }
+    
     
   def camel(branch: String) = {
     val project = new Project("camel-"+branch, new Git("ssh://git@forge.fusesource.com/camel.git", None, List(branch)))
