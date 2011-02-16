@@ -15,7 +15,9 @@ object Main extends Helper {
 
     github("fusesource", "wikitext").git(_.branches("origin"))
 
-    github("scalate", "scalate").mavenName("maven-3.0.2").using { p =>
+    github("scalate", "scalate").using { p =>
+      p.mavenName("maven-3.0.2")
+      p.jdks("jdk5")
       p.checkin.maven.profiles = List("m2", "distro")
       p.deploy.maven.profiles = List("m2", "distro")
       p.platform.maven.profiles = List("m2", "distro")
