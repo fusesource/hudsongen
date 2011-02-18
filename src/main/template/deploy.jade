@@ -13,10 +13,13 @@ maven2-moduleset
     'hudson.triggers.SCMTrigger'
       spec @daily
   concurrentBuild false
-  goals -V -B -fae -Dtest=false -DfailIfNoTests=false clean deploy#{build.maven.goalsArguments}
+  - if ( build.maven.name.startsWith("maven-3") ) 
+    goals --settings ${HOME}/.m2/m3-settings.xml -V -B -fae -Dtest=false -DfailIfNoTests=false clean deploy #{build.maven.goalsArguments}
+  - else
+    goals -V -B -fae -Dtest=false -DfailIfNoTests=false clean deploy #{build.maven.goalsArguments}
   defaultGoals install#{build.maven.goalsArguments}
   mavenName #{build.maven.name}
-  mavenOpts -Xmx1G -XX:MaxPermSize=256m
+  mavenOpts #{project.jvmOpts}
   rootPOM #{build.maven.rootPom}  
   aggregatorStyleBuild true
   incrementalBuild false

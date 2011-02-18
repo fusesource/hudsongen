@@ -26,11 +26,11 @@ matrix-project
     'hudson.tasks.Maven'
       mavenName #{build.maven.name}
       - if ( build.maven.name.startsWith("maven-3") ) 
-        targets --settings ${HOME}/.m2/m3-settings.xml -V -B -fae clean install#{build.maven.goalsArguments}
+        targets --settings ${HOME}/.m2/m3-settings.xml -V -B -fae clean install #{build.maven.goalsArguments}
       - else
-        targets -V -B -fae clean install#{build.maven.goalsArguments}
+        targets -V -B -fae clean install #{build.maven.goalsArguments}
       pom #{build.maven.rootPom}
-      jvmOptions -Xmx1G -XX:MaxPermSize=256m
+      jvmOptions #{project.jvmOpts}
       usePrivateRepository false
   publishers
     'hudson.tasks.junit.JUnitResultArchiver'
