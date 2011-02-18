@@ -1,0 +1,52 @@
+!!! XML
+matrix-project
+  actions
+  description
+  keepDependencies false
+  properties
+  'hudson.model.ParametersDefinitionProperty'
+    parameterDefinitions
+      'hudson.model.StringParameterDefinition'
+        name TAG
+        description release tag to test
+        defaultValue
+  != capture(include("common.jade"))
+  canRoam true
+  disabled false
+  blockBuildWhenUpstreamBuilding false
+  authToken a83dc6303ed1ddae7405a32f490522a6
+  triggers.vector
+  concurrentBuild false
+  axes
+    'hudson.matrix.JDKAxis'
+      name jdk
+      values
+        - for( jdk <- project.jdks ) 
+          string= jdk
+    'hudson.matrix.LabelAxis'
+      name label
+      values
+        - for( label <- project.labels ) 
+          string= label
+  builders
+    'hudson.tasks.Maven'
+      mavenName #{build.maven.name}
+      - if ( build.maven.name.startsWith("maven-3") ) 
+        targets --settings ${HOME}/.m2/m3-settings.xml -V -B -fae clean install#{build.maven.goalsArguments}
+      - else
+        targets -V -B -fae clean install#{build.maven.goalsArguments}
+      pom #{build.maven.rootPom}
+      jvmOptions -Xmx1G -XX:MaxPermSize=256m
+      usePrivateRepository false
+  publishers
+    'hudson.tasks.junit.JUnitResultArchiver'
+      testResults **/target/surefire-reports/*.xml
+      keepLongStdio false
+      testDataPublishers
+  runSequentially false
+  buildWrappers
+    'hudson.plugins.build__timeout.BuildTimeoutWrapper'
+      timeoutMinutes= project.platform.timeout
+      failBuild true
+    'matrixtieparent.BuildWrapperMtp'
+      labelName master

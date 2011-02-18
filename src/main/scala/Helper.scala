@@ -56,6 +56,8 @@ case class Project(val name:String, val scm:SCM) {
 
   def git(proc: (Git)=>Unit): this.type = { proc(scm.asInstanceOf[Git]); this }
 
+  def git = scm.asInstanceOf[Git]
+
 
   // Helper methods
 
@@ -82,6 +84,7 @@ case class Project(val name:String, val scm:SCM) {
   val checkin = Build("checkin")
   val platform = Build("platform")
   val deploy = Build("deploy").timeout(30)   // we avoid taking the full build timeout value as the default
+  val perfectus_tests = Build("perfectus-tests")
 
   var builds: List[Build] = List(checkin, platform, deploy)
 
@@ -175,6 +178,14 @@ abstract class Helper {
   
   def build(project:Project, build: Build): Unit = {
     job(project.name + "-" + build.name, render(build.template, Map("project" -> project, "build" -> build)))
+  }
+
+  def perfectus(name:String, p:Project) = {
+    var g = p.git
+    g = new Git(g.url, g.web_url, List("${TAG}"))
+    val project = new Project(name, g)
+    project.builds = List(project.perfectus_tests)
+    add(project)
   }
 
   /////////////////////////////////////////////////////////////////////

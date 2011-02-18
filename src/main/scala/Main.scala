@@ -34,7 +34,7 @@ object Main extends Helper {
 
     // ActiveMQ Branches
     activemq("trunk-fusesource")
-    activemq("5.4-fusesource")
+    activemq("5.4-fusesource") using ( perfectus("activemq", _) ) 
     subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse") using { p=>
       p.timeout(4*60)
       p.deploy.timeout(60)
@@ -49,20 +49,21 @@ object Main extends Helper {
     // Camel Branches
     camel("trunk-fuse")
     camel("2.6.0-fuse")
-    camel("2.4.0-fuse")
+    camel("2.4.0-fuse") using ( perfectus("camel", _) ) 
     // camel("2.2.0-fuse") TODO
     // camel("1.x-fuse") TODO
 
     // CXF Branches
     // cxf("trunk-fuse") TODO
     cxf("2.2.x-fuse")
-    cxf("2.3.x-fuse")
+    cxf("2.3.x-fuse") using ( perfectus("cxf", _) ) 
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
     karaf("karaf-2.1.x-fuse")
     karaf("karaf-trunk-fuse")
-
+    karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
+    
     // Felix components
     felix("fuse-trunk", "configadmin", "configadmin")
     felix("fuse-trunk", "eventadmin/impl", "eventadmin")
@@ -72,11 +73,11 @@ object Main extends Helper {
     smx4_nmr("trunk")
     smx4_nmr("nmr-1.2.0-fuse")
     smx4_nmr("nmr-1.3.0-fuse")
-    esb_nmr("nmr-1.4.x-fuse")
+    esb_nmr("nmr-1.4.x-fuse") using ( perfectus("nmr", _) ) 
 
     smx4_features("trunk")
     smx4_features("features-4.2.0-fuse")
-    smx4_features("features-4.3.0-fuse")
+    smx4_features("features-4.3.0-fuse") 
     esb_features("features-4.3.1-fuse")
     
     smx_maven_plugins("trunk")
@@ -84,16 +85,16 @@ object Main extends Helper {
     
     smx_utils("trunk")
     smx_utils("utils-1.3.0-fuse")
-    esb_utils("utils-1.4.x-fuse")
+    esb_utils("utils-1.4.x-fuse") using ( perfectus("smx-utils", _) ) 
 
     smx_components("trunk").timeout(2*60)
     smx_components("components-2010.02.0-fuse").timeout(2*60)
     smx_components("components-2010.01.0-fuse").timeout(2*60)
     smx_components("components-2009.01.x").timeout(2*60)
-    esb_components("components-2011.01.0-fuse")
+    esb_components("components-2011.01.0-fuse") using ( perfectus("smx-components", _) ) 
 
     // The specs don't have tests so don't need a nightly.
-    subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform)
+    subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
 
     // ServiceMix 3
     smx3("3.4.0-fuse").timeout(2*60)
