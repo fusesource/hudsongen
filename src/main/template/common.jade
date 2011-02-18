@@ -5,6 +5,15 @@ logRotator
   artifactDaysToKeep -1
   artifactNumToKeep -1
 properties
+  - if( !build.parameters.isEmpty )
+    'hudson.model.ParametersDefinitionProperty'
+      parameterDefinitions
+        - for( p <- build.parameters )
+          'hudson.model.StringParameterDefinition'
+            name #{p.name}
+            description #{p.description}
+            defaultValue #{p.value}
+
   - project.scm match
     - case x:GitHub =>
       'com.coravy.hudson.plugins.github.GithubProjectProperty'

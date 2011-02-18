@@ -33,6 +33,8 @@ case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String
 
 }
 
+case class Parameter(name: String, description:String="", value:String="", kind:String="hudson.model.StringParameterDefinition")
+
 case class Build(name: String) {
   var template: String = name + ".jade"
   def template(value: String): this.type = { template = value; this }
@@ -42,6 +44,10 @@ case class Build(name: String) {
 
   var timeout = 60
   def timeout(value: Int): this.type = {timeout = value; this}
+  
+  var parameters = List[Parameter]()
+  def parameters(values: Parameter*): this.type = {parameters =  List(values: _*); this}
+
 }
 
 case class Project(val name:String, val scm:SCM) {
@@ -87,7 +93,8 @@ case class Project(val name:String, val scm:SCM) {
   val checkin = Build("checkin")
   val platform = Build("platform")
   val deploy = Build("deploy").timeout(30)   // we avoid taking the full build timeout value as the default
-  val perfectus_tests = Build("perfectus-tests")
+  val perfectus_tests = Build("perfectus-tests").
+                        parameters(Parameter("TAG", "tag or branch to execute against"))
 
   var builds: List[Build] = List(checkin, platform, deploy)
 
