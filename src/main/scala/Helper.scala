@@ -61,7 +61,12 @@ case class Project(val name:String, val scm:SCM) {
   var labels = List("ubuntu","windows")
   def labels(values:String*): this.type = { labels = List(values: _*); this}
   
-  def timeout(value:Int): this.type = { checkin.timeout(value); platform.timeout(value); this }
+  def timeout(value:Int): this.type = { 
+    checkin.timeout(value)
+    platform.timeout(value)
+    perfectus_tests.timeout(value)
+    this 
+  }
 
   def git(proc: (Git)=>Unit): this.type = { proc(scm.asInstanceOf[Git]); this }
 
@@ -194,6 +199,7 @@ abstract class Helper {
     var g = p.git
     g = new Git(g.url, g.web_url, List("${TAG}"))
     val project = new Project(name, g)
+    project.timeout(p.platform.timeout)
     project.builds = List(project.perfectus_tests)
     add(project)
   }
