@@ -48,8 +48,8 @@ object Main extends Helper {
 
     // Camel Branches
     camel("trunk-fuse")
-    camel("2.6.0-fuse")
-    camel("2.4.0-fuse") using ( perfectus("camel", _) ) 
+    camel("2.6.x-fuse")
+    camel("2.4.x-fuse") using ( perfectus("camel", _) ) 
     // camel("2.2.0-fuse") TODO
     // camel("1.x-fuse") TODO
 
