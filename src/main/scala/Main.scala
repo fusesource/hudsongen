@@ -33,8 +33,9 @@ object Main extends Helper {
     github("fusesource", "jansi")
 
     // ActiveMQ Branches
-    activemq("trunk-fusesource")
-    activemq("5.4-fusesource") using ( perfectus("activemq", _) ) 
+    activemq("trunk-fuse")
+    activemq("5.5.x-fuse")
+    activemq("5.4.x-fuse") using ( perfectus("activemq", _) ) 
     subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse") using { p=>
       p.timeout(4*60)
       p.deploy.timeout(60)
