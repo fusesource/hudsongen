@@ -33,12 +33,15 @@ object Main extends Helper {
     github("fusesource", "jansi")
 
     // ActiveMQ Branches
-    activemq("trunk-fusesource")
-    activemq("5.4-fusesource") using ( perfectus("activemq", _) ) 
-    subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse") using { p=>
-      p.timeout(4*60)
-      p.deploy.timeout(60)
-    }
+    activemq("trunk-fuse")
+    activemq("5.5.x-fuse")
+    activemq("5.4.x-fuse") using ( perfectus("activemq", _) ) 
+
+    // no 5.3.x releases planned right now.
+    // subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse") using { p=>
+    //   p.timeout(4*60)
+    //   p.deploy.timeout(60)
+    // }
 
     // Apollo 
     subversion("activemq-apollo-trunk", "https://svn.apache.org/repos/asf/activemq/activemq-apollo/trunk") using { p=>
