@@ -17,7 +17,9 @@ object Main extends Helper {
 
     github("scalate", "scalate").using { p =>
       p.mavenName("maven-3.0.2")
-      p.jdks("jdk5")
+      // Run the build on jdk 5 and 6 since the core should be JDK 1.5 compatible,
+      // but we also want to test the java 6 features like Jersey integration.
+      p.jdks("jdk6", "jdk5")
       p.checkin.maven.profiles = List("m2", "distro")
       p.deploy.maven.profiles = List("m2", "distro")
       p.platform.maven.profiles = List("m2", "distro")
