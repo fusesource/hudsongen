@@ -61,6 +61,7 @@ object Main extends Helper {
     // CXF Branches
     // cxf("trunk-fuse") TODO
     cxf("2.2.x-fuse")
+    cxf("2.2.6-fuse")
     cxf("2.3.x-fuse") using ( perfectus("cxf", _) ) 
     
     // Karaf Branches
