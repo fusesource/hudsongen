@@ -64,6 +64,9 @@ object Main extends Helper {
     cxf("2.2.6-fuse")
     cxf("2.3.x-fuse") using ( perfectus("cxf", _) ) 
     
+    //esbsystemtests
+    esbsystemtests("cpi") 
+    
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
     karaf("karaf-2.1.x-fuse")
@@ -129,7 +132,16 @@ object Main extends Helper {
     project.deploy.maven.profiles = List("everything", "jaxws22")
     add(project)
   }
-  
+ 
+  def esbsystemtests(branch: String) = {
+    val project = new Project("esbsystemtests-"+branch, new Git("ssh://git@forge.fusesource.com/esbsystemtests.git", None, List(branch)))
+    project.timeout(2*60)
+    project.checkin.maven.profiles = List("smx.cpi")
+    project.deploy.maven.profiles = List("smx.cpi")
+    project.platform.maven.profiles = List("smx.cpi")
+    add(project)
+  }
+ 
   /*
    * Starting with FUSE ESB 4.3.1-fuse, branches are being maintained in this git repository
    * instead of the old svn location.
