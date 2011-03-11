@@ -112,7 +112,7 @@ object Main extends Helper {
   
   def activemq(branch:String) =  {
     val project = new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch)))
-    project.timeout(4*60)
+    project.timeout(6*60)
     project.deploy.timeout(60)
     add(project)
   }
