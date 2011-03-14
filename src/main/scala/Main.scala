@@ -65,7 +65,7 @@ object Main extends Helper {
     cxf("2.3.x-fuse") using ( perfectus("cxf", _) ) 
     
     //esbsystemtests
-    esbsystemtests("cpi") 
+    esbsystemtests("kite-4.3.1") 
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
@@ -136,9 +136,9 @@ object Main extends Helper {
   def esbsystemtests(branch: String) = {
     val project = new Project("esbsystemtests-"+branch, new Git("ssh://git@forge.fusesource.com/esbsystemtests.git", None, List(branch)))
     project.timeout(2*60)
-    project.checkin.maven.profiles = List("smx.cpi")
-    project.deploy.maven.profiles = List("smx.cpi")
-    project.platform.maven.profiles = List("smx.cpi")
+    project.checkin.maven.profiles = List("kite-4.3.1")
+    project.deploy.maven.profiles = List("kite-4.3.1")
+    project.platform.maven.profiles = List("kite-4.3.1")
     add(project)
   }
  
