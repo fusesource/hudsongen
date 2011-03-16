@@ -136,9 +136,9 @@ object Main extends Helper {
   def esbsystemtests(branch: String) = {
     val project = new Project("esbsystemtests-"+branch, new Git("ssh://git@forge.fusesource.com/esbsystemtests.git", None, List(branch)))
     project.timeout(2*60)
-    project.checkin.maven.profiles = List("kite-4.3.1")
-    project.deploy.maven.profiles = List("kite-4.3.1")
-    project.platform.maven.profiles = List("kite-4.3.1")
+    project.checkin.maven.profiles = List("ci")
+    project.deploy.maven.profiles = List("ci")
+    project.platform.maven.profiles = List("ci")
     add(project)
   }
  
