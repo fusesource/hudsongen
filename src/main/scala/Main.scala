@@ -34,8 +34,7 @@ object Main extends Helper {
     github("fusesource", "mvnplugins")
     github("fusesource", "rmiviajms")
     github("fusesource", "jansi")
-
-    github("bosschaert", "jclouds").git(_.branches("OSGi"))
+    github("fusesource", "jclouds").git(_.branches("OSGi"))
 
     // ActiveMQ Branches
     activemq("trunk-fuse")
