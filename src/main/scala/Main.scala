@@ -34,7 +34,10 @@ object Main extends Helper {
     github("fusesource", "mvnplugins")
     github("fusesource", "rmiviajms")
     github("fusesource", "jansi")
-    github("fusesource", "jclouds").git(_.branches("OSGi"))
+    github("fusesource", "jclouds").using { p =>
+      p.mavenName("maven-3.0.2")
+      p.git(_.branches("OSGi"))
+    }
 
     // ActiveMQ Branches
     activemq("trunk-fuse")
