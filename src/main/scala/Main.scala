@@ -80,33 +80,37 @@ object Main extends Helper {
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
-    felix("fuse-trunk", "configadmin", "configadmin")
-    felix("fuse-trunk", "eventadmin/impl", "eventadmin")
-    felix("fuse-trunk", "framework", "framework")
+    felix("fuse-trunk", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
+    felix("fuse-trunk", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
+    felix("fuse-trunk", "framework", "framework") using ( perfectus("felix-framework", _) )
 
     // ServiceMix Branches
     smx4_nmr("trunk")
     smx4_nmr("nmr-1.2.0-fuse")
     smx4_nmr("nmr-1.3.0-fuse")
-    esb_nmr("nmr-1.4.x-fuse") using ( perfectus("nmr", _) ) 
+    esb_nmr("nmr-1.4.x-fuse") 
+    esb_nmr("nmr-1.5.x-fuse") using ( perfectus("nmr", _) ) 
 
     smx4_features("trunk")
     smx4_features("features-4.2.0-fuse")
     smx4_features("features-4.3.0-fuse") 
-    esb_features("features-4.3.1-fuse") using ( perfectus("smx4-features", _) ) 
+    esb_features("features-4.3.1-fuse") 
+    esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
     
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.0-fuse")
     
     smx_utils("trunk")
     smx_utils("utils-1.3.0-fuse")
-    esb_utils("utils-1.4.x-fuse") using ( perfectus("smx-utils", _) ) 
+    esb_utils("utils-1.4.x-fuse") 
+    esb_utils("utils-1.5.x-fuse") using ( perfectus("smx-utils", _) ) 
 
     smx_components("trunk").timeout(2*60)
     smx_components("components-2010.02.0-fuse").timeout(2*60)
     smx_components("components-2010.01.0-fuse").timeout(2*60)
     smx_components("components-2009.01.x").timeout(2*60)
-    esb_components("components-2011.01.0-fuse") using ( perfectus("smx-components", _) ) 
+    esb_components("components-2011.01.0-fuse") 
+    esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
 
     // The specs don't have tests so don't need a nightly.
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
