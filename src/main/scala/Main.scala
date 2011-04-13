@@ -60,9 +60,9 @@ object Main extends Helper {
     camel("trunk-fuse")
     camel("2.7.x-fuse")
     camel("2.6.x-fuse")
-    camel("2.4.x-fuse") using ( perfectus("camel", _) ) 
-    // camel("2.2.0-fuse") TODO
-    // camel("1.x-fuse") TODO
+    camel("2.4.x-fuse") 
+    camel("2.2.0-fuse") 
+    camel("1.x-fuse") using ( perfectus("camel", _) ) 
 
     // CXF Branches
     cxf("trunk-fuse") 
