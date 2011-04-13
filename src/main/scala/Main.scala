@@ -65,7 +65,7 @@ object Main extends Helper {
     // camel("1.x-fuse") TODO
 
     // CXF Branches
-    // cxf("trunk-fuse") TODO
+    cxf("trunk-fuse") 
     cxf("2.2.x-fuse")
     cxf("2.2.6-fuse")
     cxf("2.3.x-fuse") using ( perfectus("cxf", _) ) 
