@@ -61,7 +61,7 @@ object Main extends Helper {
     camel("2.7.x-fuse")
     camel("2.6.x-fuse")
     camel("2.4.x-fuse") 
-    camel("2.2.0-fuse") 
+    camel("2.2.x-fuse") 
     camel("1.x-fuse") using ( perfectus("camel", _) ) 
 
     // CXF Branches
