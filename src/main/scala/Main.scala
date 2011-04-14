@@ -27,6 +27,17 @@ object Main extends Helper {
       p.deploy.timeout(45)
     }
 
+    github("fusesource", "fabric").using { p =>
+      p.mavenName("maven-3.0.2")
+      p.jdks("jdk6")
+      /*
+      p.checkin.maven.profiles = List("m2", "distro")
+      p.deploy.maven.profiles = List("m2", "distro")
+      p.platform.maven.profiles = List("m2", "distro")
+      */
+      p.deploy.timeout(45)
+    }
+
     github("fusesource", "hawtdb")
     github("fusesource", "hawtdispatch")
     github("fusesource", "hawtjni")
