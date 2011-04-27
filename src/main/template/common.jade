@@ -19,6 +19,21 @@ properties
       'com.coravy.hudson.plugins.github.GithubProjectProperty'
         projectUrl= with_trailing_slash(project.scm.web_url.get)
     - case _ =>
+publishers
+  - for (irc <- build.ircs)
+    'hudson.plugins.ircbot.IrcPublisher'
+      targets
+        'hudson.plugins.im.GroupChatIMMessageTarget'
+          name ##{irc.room}
+          password
+      strategy FAILURE_AND_FIXED
+      notifyOnBuildStart false
+      notifySuspects false
+      notifyCulprits false
+      notifyFixers false
+      notifyUpstreamCommitters false
+      buildToChatNotifier(class="hudson.plugins.im.build_notify.PrintFailingTestsBuildToChatNotifier")
+      channels
 - project.scm match
   - case x:Git => 
     != capture(include("git.jade"))

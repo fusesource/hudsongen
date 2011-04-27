@@ -25,6 +25,7 @@ object Main extends Helper {
       p.deploy.maven.profiles = List("m2", "distro")
       p.platform.maven.profiles = List("m2", "distro")
       p.deploy.timeout(45)
+      p.ircNotify(IrcNotify("scalate"), p.checkin, p.deploy)
     }
 
     github("fusesource", "fabric").using { p =>
@@ -34,6 +35,7 @@ object Main extends Helper {
       p.deploy.maven.profiles = List("distro")
       p.platform.maven.profiles = List("distro")
       p.deploy.timeout(45)
+      p.ircNotify(IrcNotify("fusefabric"), p.checkin, p.deploy)
     }
 
     github("fusesource", "hawtdb")

@@ -35,6 +35,8 @@ case class MavenOptions(var goals: List[String] = Nil, var profiles: List[String
 
 case class Parameter(name: String, description:String="", value:String="", kind:String="hudson.model.StringParameterDefinition")
 
+case class IrcNotify(room: String)
+
 case class Build(name: String) {
   var template: String = name + ".jade"
   def template(value: String): this.type = { template = value; this }
@@ -47,6 +49,10 @@ case class Build(name: String) {
   
   var parameters = List[Parameter]()
   def parameters(values: Parameter*): this.type = {parameters =  List(values: _*); this}
+
+  var ircs = List[IrcNotify]()
+  def ircs(values: IrcNotify*): this.type = {ircs =  List(values: _*); this}
+
 
 }
 
@@ -92,6 +98,16 @@ case class Project(val name:String, val scm:SCM) {
   def using(f: Project => Unit): this.type = {
     f(this)
     this
+  }
+
+
+  /**
+   * Adds IRC notifications to the given list of builds
+   */
+  def ircNotify(i: IrcNotify, builds: Build*): Unit = {
+    for (b <- builds) {
+      b.ircs(i)
+    }
   }
 
   // builds
@@ -172,7 +188,13 @@ abstract class Helper {
   }
 
   def github(user:String, project:String) = {
-    add(Project(project, new GitHub(user, project)))
+    val p = add(Project(project, new GitHub(user, project)))
+    for (b <- List(p.checkin, p.deploy)) {
+      if (b.ircs.isEmpty) {
+        b.ircs(IrcNotify("fuseforge"))
+      }
+    }
+    p
   }
 
   def forge_git(project:String) = {
