@@ -34,6 +34,11 @@ publishers
       notifyUpstreamCommitters false
       buildToChatNotifier(class="hudson.plugins.im.build_notify.PrintFailingTestsBuildToChatNotifier")
       channels
+  - for (ju <- build.junitPublisher)
+    'hudson.tasks.junit.JUnitResultArchiver'
+      testResults #{ju.testResults}
+      keepLongStdio false
+      testDataPublishers
 - project.scm match
   - case x:Git => 
     != capture(include("git.jade"))

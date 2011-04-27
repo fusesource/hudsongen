@@ -37,6 +37,8 @@ case class Parameter(name: String, description:String="", value:String="", kind:
 
 case class IrcNotify(room: String)
 
+case class JUnitPublisher(testResults: String = "**/target/surefire-reports/*.xml")
+
 case class Build(name: String) {
   var template: String = name + ".jade"
   def template(value: String): this.type = { template = value; this }
@@ -54,6 +56,8 @@ case class Build(name: String) {
   def ircs(values: IrcNotify*): this.type = {ircs =  List(values: _*); this}
 
 
+  var junitPublisher: Option[JUnitPublisher] = None
+  def junitPublisher(v: JUnitPublisher): this.type = {junitPublisher =  Some(v); this}
 }
 
 case class Project(val name:String, val scm:SCM) {
@@ -112,10 +116,11 @@ case class Project(val name:String, val scm:SCM) {
 
   // builds
   val checkin = Build("checkin")
-  val platform = Build("platform")
+  val platform = Build("platform").junitPublisher(JUnitPublisher())
   val deploy = Build("deploy").timeout(30)   // we avoid taking the full build timeout value as the default
   val perfectus_tests = Build("perfectus-tests").
-                        parameters(Parameter("TAG", "tag or branch to execute against"))
+                        parameters(Parameter("TAG", "tag or branch to execute against")).
+                        junitPublisher(JUnitPublisher())
 
   var builds: List[Build] = List(checkin, platform, deploy)
 

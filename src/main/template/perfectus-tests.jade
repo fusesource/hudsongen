@@ -31,11 +31,6 @@ matrix-project
       pom #{build.maven.rootPom}
       jvmOptions #{project.jvmOpts}
       usePrivateRepository false
-  publishers
-    'hudson.tasks.junit.JUnitResultArchiver'
-      testResults **/target/surefire-reports/*.xml
-      keepLongStdio false
-      testDataPublishers
   runSequentially false
   buildWrappers
     'hudson.plugins.build__timeout.BuildTimeoutWrapper'
