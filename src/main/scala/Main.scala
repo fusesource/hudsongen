@@ -129,7 +129,7 @@ object Main extends Helper {
   }
   
   def apollo(branch:String) =  {
-    val project = new Project("apollo-"+branch, new Git("ssh://git@forge.fusesource.com/apollo.git", None, List(branch)))
+    val project = new Project("activemq-apollo-"+branch, new Git("ssh://git@forge.fusesource.com/apollo.git", None, List(branch)))
     project.timeout(1*60)
     project.deploy.timeout(60)
     project.mavenName("maven-3.0.2")
