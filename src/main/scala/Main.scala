@@ -61,11 +61,8 @@ object Main extends Helper {
     //   p.deploy.timeout(60)
     // }
 
-    // Apollo 
-    subversion("activemq-apollo-trunk", "https://svn.apache.org/repos/asf/activemq/activemq-apollo/trunk") using { p=>
-      p.mavenName("maven-3.0.2")
-      p.removeBuild(_.deploy)
-    }
+    // Apollo Branches
+    apollo("trunk-fuse")
 
     // Camel Branches
     camel("trunk-fuse")
@@ -131,6 +128,14 @@ object Main extends Helper {
     smx3("3.5.0-fuse").timeout(2*60)
   }
   
+  def apollo(branch:String) =  {
+    val project = new Project("apollo-"+branch, new Git("ssh://git@forge.fusesource.com/apollo.git", None, List(branch)))
+    project.timeout(1*60)
+    project.deploy.timeout(60)
+    project.mavenName("maven-3.0.2")
+    add(project)
+  }
+
   def activemq(branch:String) =  {
     val project = new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch)))
     project.timeout(6*60)
