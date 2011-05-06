@@ -84,7 +84,7 @@ object Main extends Helper {
     // Karaf Branches
     karaf("karaf-2.0.0-fuse")
     karaf("karaf-2.1.x-fuse")
-    karaf("karaf-trunk-fuse")
+    karaf("karaf-2.2.x-fuse")
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
