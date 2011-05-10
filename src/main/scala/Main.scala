@@ -10,7 +10,10 @@ object Main extends Helper {
       p.deploy.maven.profiles = List("distro")
     }
     
-    forge_git("fon")
+    forge_git("fon").using { p =>
+      p.ircNotify(IrcNotify("fuseforge"), p.checkin, p.deploy)
+    }
+    
     forge_git("mop")
     forge_git("ridersource")
 
