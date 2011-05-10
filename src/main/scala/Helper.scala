@@ -192,8 +192,7 @@ abstract class Helper {
     add(Project(project, new Subversion(url, project)))
   }
 
-  def github(user:String, project:String) = {
-    val p = add(Project(project, new GitHub(user, project)))
+  def defaultIrcNotify(p: Project) = {
     for (b <- List(p.checkin, p.deploy)) {
       if (b.ircs.isEmpty) {
         b.ircs(IrcNotify("fuseforge"))
@@ -201,9 +200,15 @@ abstract class Helper {
     }
     p
   }
+  
+  def github(user:String, project:String) = {
+    val p = add(Project(project, new GitHub(user, project)))
+    defaultIrcNotify(p)
+  }
 
   def forge_git(project:String) = {
-    add(new Project(project, new Git("ssh://git@forge.fusesource.com/"+project+".git")))
+    val p = add(new Project(project, new Git("ssh://git@forge.fusesource.com/"+project+".git")))
+    defaultIrcNotify(p)
   }
 
   def generate(): Unit = {
