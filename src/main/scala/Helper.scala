@@ -231,6 +231,7 @@ abstract class Helper {
     var g = p.git
     g = new Git(g.url, g.web_url, List("${TAG}"))
     val project = new Project(name, g)
+    project.perfectus_tests.maven = p.perfectus_tests.maven
     project.timeout(p.platform.timeout)
     project.builds = List(project.perfectus_tests)
     add(project)
