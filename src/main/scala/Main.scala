@@ -129,6 +129,7 @@ object Main extends Helper {
     // ServiceMix 3
     smx3("3.4.0-fuse").timeout(2*60)
     smx3("3.5.0-fuse").timeout(2*60)
+    servicemix3("3.6.0-fuse").timeout(2*60)
   }
   
   def apollo(branch:String) =  {
@@ -253,5 +254,8 @@ object Main extends Helper {
   }
 
   def smx3(version:String) = subversion("smx-" + version, smx_base + "/branches/servicemix-" + version)
-
+  
+  def servicemix3(version: String) =     
+    add(new Project("smx-" + version, 
+                    new Git("ssh://git@forge.fusesource.com/servicemix3.git", None, List("servicemix-" + version)))) 
 }
