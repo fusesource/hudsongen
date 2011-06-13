@@ -127,8 +127,9 @@ object Main extends Helper {
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
 
     // ServiceMix 3
-    smx3("3.4.0-fuse").timeout(2*60)
-    smx3("3.5.0-fuse").timeout(2*60)
+    servicemix3("3.3.1-fuse").timeout(2*60)    
+    servicemix3("3.4.0-fuse").timeout(2*60)
+    servicemix3("3.5.0-fuse").timeout(2*60)
     servicemix3("3.6.0-fuse").timeout(2*60)
   }
   
