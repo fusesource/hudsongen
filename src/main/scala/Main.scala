@@ -76,7 +76,8 @@ object Main extends Helper {
     cxf("trunk-fuse") 
     cxf("2.2.x-fuse")
     cxf("2.2.6-fuse")
-    cxf("2.3.x-fuse") using ( perfectus("cxf", _) ) 
+    cxf("2.3.x-fuse")
+    cxf("2.4.x-fuse") using ( perfectus("cxf", _) ) 
     
     //esbsystemtests
     esbsystemtests("kite-4.3.1") 
