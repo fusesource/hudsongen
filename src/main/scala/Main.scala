@@ -158,8 +158,8 @@ object Main extends Helper {
   
   def cxf(branch: String) = {
     val project = new Project("cxf-"+branch, new Git("ssh://git@forge.fusesource.com/cxf.git", None, List(branch)))
-    project.timeout(2*60)
-    project.deploy.timeout(2*60)
+    project.timeout(3*60)
+    project.deploy.timeout(3*60)
     project.deploy.maven.profiles = List("everything", "jaxws22")
     add(project)
   }
