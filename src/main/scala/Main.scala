@@ -117,10 +117,9 @@ object Main extends Helper {
     esb_utils("utils-1.4.x-fuse") 
     esb_utils("utils-1.5.x-fuse") using ( perfectus("smx-utils", _) ) 
 
-    smx_components("trunk").timeout(2*60)
-    smx_components("components-2010.02.0-fuse").timeout(2*60)
-    smx_components("components-2010.01.0-fuse").timeout(2*60)
-    smx_components("components-2009.01.x").timeout(2*60)
+    esb_components("components-2009.01.x")
+    esb_components("components-2010.01.0-fuse")
+    esb_components("components-2010.02.0-fuse")
     esb_components("components-2011.01.0-fuse") 
     esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
 
