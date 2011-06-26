@@ -92,6 +92,7 @@ object Main extends Helper {
     felix("fuse-trunk", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
     felix("fuse-trunk", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
     felix("fuse-trunk", "framework", "framework") using ( perfectus("felix-framework", _) )
+    felix("fuse-trunk", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
 
     // ServiceMix Branches
     smx4_nmr("trunk")
