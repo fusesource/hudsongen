@@ -31,7 +31,7 @@ object Main extends Helper {
     github("fusesource", "fabric").using { p =>
       p.mavenName("maven-3.0.2")
       p.jdks("jdk6")
-      p.checkin.maven.profiles = List("distro")
+      p.checkin.maven.profiles = List("distro", "itests")
       p.deploy.maven.profiles = List("distro")
       p.platform.maven.profiles = List("distro")
       p.deploy.timeout(45)
