@@ -104,13 +104,18 @@ object Main extends Helper {
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
     }
+    esb_nmr("nmr-1.5.1-fuse") using { p =>
+      perfectus("nmr", p)
+      p.mavenName("maven-3.0.2")
+    }
 
     smx4_features("trunk")
     smx4_features("features-4.2.0-fuse")
     smx4_features("features-4.3.0-fuse") 
     esb_features("features-4.3.1-fuse") 
     esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
-    
+    esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
+
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.0-fuse")
     
@@ -124,6 +129,7 @@ object Main extends Helper {
     esb_components("components-2010.02.0-fuse")
     esb_components("components-2011.01.0-fuse") 
     esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
+    esb_components("components-2011.02.1-fuse") using ( perfectus("smx-components", _) )
 
     // The specs don't have tests so don't need a nightly.
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
