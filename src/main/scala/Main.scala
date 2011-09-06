@@ -115,6 +115,7 @@ object Main extends Helper {
     esb_features("features-4.3.1-fuse") 
     esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
     esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
+    esb_features("features-4.5.0-fuse") using ( perfectus("smx4-features", _) )    
 
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.0-fuse")
