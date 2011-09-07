@@ -108,6 +108,10 @@ object Main extends Helper {
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
     }
+    esb_nmr("nmr-1.5.2-fuse") using { p =>
+      perfectus("nmr", p)
+      p.mavenName("maven-3.0.2")
+    }
 
     smx4_features("trunk")
     smx4_features("features-4.2.0-fuse")
