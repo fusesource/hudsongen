@@ -90,6 +90,11 @@ object Main extends Helper {
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
+    felix("4.4.1-fuse", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
+    felix("4.4.1-fuse", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
+    felix("4.4.1-fuse", "framework", "framework") using ( perfectus("felix-framework", _) )
+    felix("4.4.1-fuse", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
+
     felix("fuse-trunk", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
     felix("fuse-trunk", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
     felix("fuse-trunk", "framework", "framework") using ( perfectus("felix-framework", _) )
