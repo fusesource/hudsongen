@@ -90,6 +90,11 @@ object Main extends Helper {
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
+    felix("4.4.1-fuse", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
+    felix("4.4.1-fuse", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
+    felix("4.4.1-fuse", "framework", "framework") using ( perfectus("felix-framework", _) )
+    felix("4.4.1-fuse", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
+
     felix("fuse-trunk", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
     felix("fuse-trunk", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
     felix("fuse-trunk", "framework", "framework") using ( perfectus("felix-framework", _) )
@@ -100,7 +105,15 @@ object Main extends Helper {
     smx4_nmr("nmr-1.2.0-fuse")
     smx4_nmr("nmr-1.3.0-fuse")
     esb_nmr("nmr-1.4.x-fuse") 
-    esb_nmr("nmr-1.5.x-fuse") using { p =>
+    esb_nmr("nmr-1.5.0-fuse") using { p =>
+      perfectus("nmr", p)
+      p.mavenName("maven-3.0.2")
+    }
+    esb_nmr("nmr-1.5.1-fuse") using { p =>
+      perfectus("nmr", p)
+      p.mavenName("maven-3.0.2")
+    }
+    esb_nmr("nmr-1.5.2-fuse") using { p =>
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
     }
@@ -110,7 +123,9 @@ object Main extends Helper {
     smx4_features("features-4.3.0-fuse") 
     esb_features("features-4.3.1-fuse") 
     esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
-    
+    esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
+    esb_features("features-4.5.0-fuse") using ( perfectus("smx4-features", _) )    
+
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.0-fuse")
     
@@ -124,6 +139,7 @@ object Main extends Helper {
     esb_components("components-2010.02.0-fuse")
     esb_components("components-2011.01.0-fuse") 
     esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
+    esb_components("components-2011.02.1-fuse") using ( perfectus("smx-components", _) )
 
     // The specs don't have tests so don't need a nightly.
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
