@@ -94,6 +94,7 @@ object Main extends Helper {
     felix("4.4.1-fuse", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
     felix("4.4.1-fuse", "framework", "framework") using ( perfectus("felix-framework", _) )
     felix("4.4.1-fuse", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
+    felix("4.4.1-fuse", "webconsole", "webconsole") using ( perfectus("felix-webconsole", _) )
 
     felix("fuse-trunk", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
     felix("fuse-trunk", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
