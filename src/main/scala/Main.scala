@@ -134,7 +134,8 @@ object Main extends Helper {
     smx_utils("trunk")
     smx_utils("utils-1.3.0-fuse")
     esb_utils("utils-1.4.x-fuse") 
-    esb_utils("utils-1.5.x-fuse") using ( perfectus("smx-utils", _) ) 
+    esb_utils("utils-1.5.0-fuse") using ( perfectus("smx-utils", _) ) 
+    esb_utils("utils-1.5.1-fuse") using ( perfectus("smx-utils", _) ) 
 
     esb_components("components-2009.01.x")
     esb_components("components-2010.01.0-fuse")
