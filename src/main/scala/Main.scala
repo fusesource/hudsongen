@@ -48,6 +48,7 @@ object Main extends Helper {
     github("fusesource", "jclouds").using { p =>
       p.mavenName("maven-3.0.2")
       p.git(_.branches("OSGi"))
+      p.deploy.timeout(60)
     }
 
     // ActiveMQ Branches
