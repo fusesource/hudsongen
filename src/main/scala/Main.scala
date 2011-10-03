@@ -237,7 +237,7 @@ object Main extends Helper {
 
   def felix(branch:String, comp:String, name:String) = {
     val project = new Project("felix-" + name + "-" + branch,
-					          new Git("ssh://git@forge.fusesource.com/fuseosgi.git", None, List(branch)))
+					          new Git("ssh://git@forge.fusesource.com/felix.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	project.removeBuild(_.platform)
