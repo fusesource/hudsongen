@@ -61,8 +61,13 @@ case class Build(name: String) {
 }
 
 case class Project(val name:String, val scm:SCM) {
-  
 
+  var disabled = false
+
+  def disable: Unit = {
+	  disabled = true
+  }
+  
   var jdks = List("jdk6")
   def jdks(values:String*): this.type = { jdks = List(values: _*); this}
 

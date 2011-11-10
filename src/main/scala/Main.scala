@@ -55,7 +55,10 @@ object Main extends Helper {
     activemq("trunk-fuse")
     activemq("5.5.x-fuse")
     activemq("5.5.1-fuse")
-    activemq("5.4.x-fuse") using ( perfectus("activemq", _) ) 
+    activemq("5.4.x-fuse") using { p =>
+      perfectus("activemq", p)
+      p.disable
+    }
 
     // no 5.3.x releases planned right now.
     // subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse") using { p=>
@@ -70,15 +73,18 @@ object Main extends Helper {
     camel("trunk-fuse")
     camel("2.8.x-fuse")
     camel("2.7.x-fuse")
-    camel("2.6.x-fuse")
-    camel("2.4.x-fuse") 
-    camel("2.2.x-fuse") 
-    camel("1.x-fuse") using ( perfectus("camel", _) ) 
+    camel("2.6.x-fuse").disable
+    camel("2.4.x-fuse").disable
+    camel("2.2.x-fuse").disable 
+    camel("1.x-fuse") using { p =>
+      perfectus("camel", p)
+      p.disable
+    }
 
     // CXF Branches
     cxf("trunk-fuse") 
-    cxf("2.2.x-fuse")
-    cxf("2.2.6-fuse")
+    cxf("2.2.x-fuse").disable
+    cxf("2.2.6-fuse").disable
     cxf("2.3.x-fuse")
     cxf("2.4.x-fuse") using ( perfectus("cxf", _) ) 
     cxf("2.4.2-fuse-00-xx") using ( perfectus("cxf", _) ) 
@@ -87,8 +93,8 @@ object Main extends Helper {
     esbsystemtests("kite-4.3.1") 
     
     // Karaf Branches
-    karaf("karaf-2.0.0-fuse")
-    karaf("karaf-2.1.x-fuse")
+    karaf("karaf-2.0.0-fuse").disable
+    karaf("karaf-2.1.x-fuse").disable
     karaf("karaf-2.2.x-fuse")
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
@@ -106,12 +112,13 @@ object Main extends Helper {
 
     // ServiceMix Branches
     smx4_nmr("trunk")
-    smx4_nmr("nmr-1.2.0-fuse")
-    smx4_nmr("nmr-1.3.0-fuse")
-    esb_nmr("nmr-1.4.x-fuse") 
+    smx4_nmr("nmr-1.2.0-fuse").disable
+    smx4_nmr("nmr-1.3.0-fuse").disable
+    esb_nmr("nmr-1.4.x-fuse").disable
     esb_nmr("nmr-1.5.0-fuse") using { p =>
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
+      p.disable
     }
     esb_nmr("nmr-1.5.1-fuse") using { p =>
       perfectus("nmr", p)
@@ -123,8 +130,8 @@ object Main extends Helper {
     }
 
     smx4_features("trunk")
-    smx4_features("features-4.2.0-fuse")
-    smx4_features("features-4.3.0-fuse") 
+    smx4_features("features-4.2.0-fuse").disable
+    smx4_features("features-4.3.0-fuse").disable
     esb_features("features-4.3.1-fuse") 
     esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
     esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
@@ -134,15 +141,15 @@ object Main extends Helper {
     smx_maven_plugins("maven-plugins-4.3.x-fuse")
     
     smx_utils("trunk")
-    smx_utils("utils-1.3.0-fuse")
-    esb_utils("utils-1.4.x-fuse") 
+    smx_utils("utils-1.3.0-fuse").disable
+    esb_utils("utils-1.4.x-fuse").disable
     esb_utils("utils-1.5.0-fuse") using ( perfectus("smx-utils", _) ) 
     esb_utils("utils-1.5.1-fuse") using ( perfectus("smx-utils", _) ) 
 
-    esb_components("components-2009.01.x")
-    esb_components("components-2010.01.0-fuse")
-    esb_components("components-2010.02.0-fuse")
-    esb_components("components-2011.01.0-fuse") 
+    esb_components("components-2009.01.x").disable
+    esb_components("components-2010.01.0-fuse").disable
+    esb_components("components-2010.02.0-fuse").disable
+    esb_components("components-2011.01.0-fuse").disable
     esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
     esb_components("components-2011.02.1-fuse") using ( perfectus("smx-components", _) )
 
@@ -150,9 +157,9 @@ object Main extends Helper {
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
 
     // ServiceMix 3
-    servicemix3("3.3.1-fuse").timeout(2*60)    
-    servicemix3("3.4.0-fuse").timeout(2*60)
-    servicemix3("3.5.0-fuse").timeout(2*60)
+    servicemix3("3.3.1-fuse").timeout(2*60).disable
+    servicemix3("3.4.0-fuse").timeout(2*60).disable
+    servicemix3("3.5.0-fuse").timeout(2*60).disable
     servicemix3("3.6.0-fuse").timeout(2*60)
   }
   
