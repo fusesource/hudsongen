@@ -28,7 +28,7 @@ object Main extends Helper {
       p.ircNotify(IrcNotify("scalate"), p.checkin, p.deploy)
     }
 
-    github("fusesource", "fabric").using { p =>
+    github("fusesource", "fuse").using { p =>
       p.mavenName("maven-3.0.2")
       p.jdks("jdk6")
       p.checkin.maven.profiles = List("distro", "itests")
