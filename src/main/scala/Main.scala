@@ -45,6 +45,7 @@ object Main extends Helper {
     github("fusesource", "mvnplugins")
     github("fusesource", "rmiviajms")
     github("fusesource", "jansi")
+    github("fusesource", "brew")
     github("fusesource", "jclouds").using { p =>
       p.mavenName("maven-3.0.2")
       p.git(_.branches("OSGi"))
