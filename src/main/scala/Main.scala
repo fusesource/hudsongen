@@ -72,9 +72,18 @@ object Main extends Helper {
     apollo("trunk-fuse")
 
     // Camel Branches
-    camel("trunk-fuse")
-    camel("2.9.x-fuse")
-    camel("2.8.x-fuse")
+    camel("trunk-fuse") using { p =>
+      perfectus("camel", p)
+      p.mavenName("maven-3.0.2")
+    }
+    camel("2.9.x-fuse") using { p =>
+      perfectus("camel", p)
+      p.mavenName("maven-3.0.2")
+    }
+    camel("2.8.x-fuse") using { p =>
+      perfectus("camel", p)
+      p.mavenName("maven-3.0.2")
+    }
     camel("2.7.x-fuse")
     camel("2.6.x-fuse").disable
     camel("2.4.x-fuse").disable
