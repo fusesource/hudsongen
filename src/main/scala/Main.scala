@@ -54,6 +54,7 @@ object Main extends Helper {
 
     // ActiveMQ Branches
     activemq("trunk-fuse")
+    activemq("5.6.x-fuse")
     activemq("5.5.x-fuse")
     activemq("5.5.1-fuse")
     activemq("5.4.x-fuse") using { p =>
