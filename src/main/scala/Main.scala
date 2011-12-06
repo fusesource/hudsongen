@@ -28,7 +28,7 @@ object Main extends Helper {
       p.ircNotify(IrcNotify("scalate"), p.checkin, p.deploy)
     }
 
-    github("fusesource", "fabric").using { p =>
+    github("fusesource", "fuse").using { p =>
       p.mavenName("maven-3.0.2")
       p.jdks("jdk6")
       p.checkin.maven.profiles = List("distro", "itests")
@@ -45,15 +45,21 @@ object Main extends Helper {
     github("fusesource", "mvnplugins")
     github("fusesource", "rmiviajms")
     github("fusesource", "jansi")
+    github("fusesource", "brew")
     github("fusesource", "jclouds").using { p =>
       p.mavenName("maven-3.0.2")
       p.git(_.branches("OSGi"))
+      p.deploy.timeout(60)
     }
 
     // ActiveMQ Branches
     activemq("trunk-fuse")
     activemq("5.5.x-fuse")
-    activemq("5.4.x-fuse") using ( perfectus("activemq", _) ) 
+    activemq("5.5.1-fuse")
+    activemq("5.4.x-fuse") using { p =>
+      perfectus("activemq", p)
+      p.disable
+    }
 
     // no 5.3.x releases planned right now.
     // subversion("activemq-5.3.1-fuse", "http://fusesource.com/forge/svn/fusemq/branches/activemq-5.3.1-fuse") using { p=>
@@ -66,26 +72,31 @@ object Main extends Helper {
 
     // Camel Branches
     camel("trunk-fuse")
+    camel("2.9.x-fuse")
     camel("2.8.x-fuse")
     camel("2.7.x-fuse")
-    camel("2.6.x-fuse")
-    camel("2.4.x-fuse") 
-    camel("2.2.x-fuse") 
-    camel("1.x-fuse") using ( perfectus("camel", _) ) 
+    camel("2.6.x-fuse").disable
+    camel("2.4.x-fuse").disable
+    camel("2.2.x-fuse").disable 
+    camel("1.x-fuse") using { p =>
+      perfectus("camel", p)
+      p.disable
+    }
 
     // CXF Branches
     cxf("trunk-fuse") 
-    cxf("2.2.x-fuse")
-    cxf("2.2.6-fuse")
+    cxf("2.2.x-fuse").disable
+    cxf("2.2.6-fuse").disable
     cxf("2.3.x-fuse")
     cxf("2.4.x-fuse") using ( perfectus("cxf", _) ) 
+    cxf("2.4.2-fuse-00-xx") using ( perfectus("cxf", _) ) 
     
     //esbsystemtests
     esbsystemtests("kite-4.3.1") 
     
     // Karaf Branches
-    karaf("karaf-2.0.0-fuse")
-    karaf("karaf-2.1.x-fuse")
+    karaf("karaf-2.0.0-fuse").disable
+    karaf("karaf-2.1.x-fuse").disable
     karaf("karaf-2.2.x-fuse")
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
@@ -94,6 +105,7 @@ object Main extends Helper {
     felix("4.4.1-fuse", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
     felix("4.4.1-fuse", "framework", "framework") using ( perfectus("felix-framework", _) )
     felix("4.4.1-fuse", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
+    felix("4.4.1-fuse", "webconsole", "webconsole") using ( perfectus("felix-webconsole", _) )
 
     felix("fuse-trunk", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
     felix("fuse-trunk", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
@@ -102,12 +114,13 @@ object Main extends Helper {
 
     // ServiceMix Branches
     smx4_nmr("trunk")
-    smx4_nmr("nmr-1.2.0-fuse")
-    smx4_nmr("nmr-1.3.0-fuse")
-    esb_nmr("nmr-1.4.x-fuse") 
+    smx4_nmr("nmr-1.2.0-fuse").disable
+    smx4_nmr("nmr-1.3.0-fuse").disable
+    esb_nmr("nmr-1.4.x-fuse").disable
     esb_nmr("nmr-1.5.0-fuse") using { p =>
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
+      p.disable
     }
     esb_nmr("nmr-1.5.1-fuse") using { p =>
       perfectus("nmr", p)
@@ -119,25 +132,26 @@ object Main extends Helper {
     }
 
     smx4_features("trunk")
-    smx4_features("features-4.2.0-fuse")
-    smx4_features("features-4.3.0-fuse") 
+    smx4_features("features-4.2.0-fuse").disable
+    smx4_features("features-4.3.0-fuse").disable
     esb_features("features-4.3.1-fuse") 
     esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
     esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
-    esb_features("features-4.5.0-fuse") using ( perfectus("smx4-features", _) )    
+    esb_features("features-5.0.0-fuse") using ( perfectus("smx4-features", _) )    
 
     smx_maven_plugins("trunk")
-    smx_maven_plugins("maven-plugins-4.3.0-fuse")
+    smx_maven_plugins("maven-plugins-4.3.x-fuse")
     
     smx_utils("trunk")
-    smx_utils("utils-1.3.0-fuse")
-    esb_utils("utils-1.4.x-fuse") 
-    esb_utils("utils-1.5.x-fuse") using ( perfectus("smx-utils", _) ) 
+    smx_utils("utils-1.3.0-fuse").disable
+    esb_utils("utils-1.4.x-fuse").disable
+    esb_utils("utils-1.5.0-fuse") using ( perfectus("smx-utils", _) ) 
+    esb_utils("utils-1.5.1-fuse") using ( perfectus("smx-utils", _) ) 
 
-    esb_components("components-2009.01.x")
-    esb_components("components-2010.01.0-fuse")
-    esb_components("components-2010.02.0-fuse")
-    esb_components("components-2011.01.0-fuse") 
+    esb_components("components-2009.01.x").disable
+    esb_components("components-2010.01.0-fuse").disable
+    esb_components("components-2010.02.0-fuse").disable
+    esb_components("components-2011.01.0-fuse").disable
     esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
     esb_components("components-2011.02.1-fuse") using ( perfectus("smx-components", _) )
 
@@ -145,9 +159,9 @@ object Main extends Helper {
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
 
     // ServiceMix 3
-    servicemix3("3.3.1-fuse").timeout(2*60)    
-    servicemix3("3.4.0-fuse").timeout(2*60)
-    servicemix3("3.5.0-fuse").timeout(2*60)
+    servicemix3("3.3.1-fuse").timeout(2*60).disable
+    servicemix3("3.4.0-fuse").timeout(2*60).disable
+    servicemix3("3.5.0-fuse").timeout(2*60).disable
     servicemix3("3.6.0-fuse").timeout(2*60)
   }
   
@@ -235,7 +249,7 @@ object Main extends Helper {
 
   def felix(branch:String, comp:String, name:String) = {
     val project = new Project("felix-" + name + "-" + branch,
-					          new Git("ssh://git@forge.fusesource.com/fuseosgi.git", None, List(branch)))
+					          new Git("ssh://git@forge.fusesource.com/felix.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	project.removeBuild(_.platform)

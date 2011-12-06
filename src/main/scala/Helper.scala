@@ -61,8 +61,13 @@ case class Build(name: String) {
 }
 
 case class Project(val name:String, val scm:SCM) {
-  
 
+  var disabled = false
+
+  def disable: Unit = {
+	  disabled = true
+  }
+  
   var jdks = List("jdk6")
   def jdks(values:String*): this.type = { jdks = List(values: _*); this}
 
@@ -115,7 +120,7 @@ case class Project(val name:String, val scm:SCM) {
   }
 
   // builds
-  val checkin = Build("checkin")
+  val checkin = Build("checkin").junitPublisher(JUnitPublisher())
   val platform = Build("platform").junitPublisher(JUnitPublisher())
   val deploy = Build("deploy").timeout(30)   // we avoid taking the full build timeout value as the default
   val perfectus_tests = Build("perfectus-tests").
