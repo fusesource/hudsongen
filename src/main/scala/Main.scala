@@ -165,6 +165,7 @@ object Main extends Helper {
     esb_components("components-2011.01.0-fuse").disable
     esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
     esb_components("components-2011.02.1-fuse") using ( perfectus("smx-components", _) )
+    esb_components("components-2012.01.0-fuse") using ( perfectus("smx-components", _) )
 
     // The specs don't have tests so don't need a nightly.
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
