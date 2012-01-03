@@ -148,7 +148,12 @@ object Main extends Helper {
     esb_features("features-4.3.1-fuse") 
     esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
     esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
-    esb_features("features-5.0.0-fuse") using ( perfectus("smx4-features", _) )    
+    esb_features("features-5.0.0-fuse") using ( perfectus("smx4-features", _) ) 
+
+    fuseenterprise("fuseesb-7") using { p =>
+      perfectus("fuseenterprise", p)
+      p.mavenName("maven-3.0.2")
+    }
 
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.x-fuse")
@@ -228,7 +233,15 @@ object Main extends Helper {
     project.timeout(90)
     add(project)
   }    
-  
+ 
+  def fuseenterprise(branch: String) = {
+    val project = new Project("fuseenterprise-" + branch,
+                              new Git("ssh://git@forge.fusesource.com/fuseenterprise.git", None, List(branch)))
+    project.deploy.timeout(90)
+    project.timeout(90)
+    add(project)
+  }
+ 
   /*
    * Starting with FUSE ESB JBI Components 2011.01.0-fuse, branches are being maintained in this git repository
    * instead of the old svn location.
