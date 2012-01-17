@@ -150,8 +150,16 @@ object Main extends Helper {
     esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
     esb_features("features-5.0.0-fuse") using ( perfectus("smx4-features", _) ) 
 
-    fuseenterprise("fuseesb-7") using { p =>
-      perfectus("fuseenterprise", p)
+    fuseenterprise("fuseesb-7", "", "fabric") using { p =>
+      perfectus("fuseenterprise-fabric", p)
+      p.mavenName("maven-3.0.2")
+    }
+    fuseenterprise("fuseesb-7", "mq", "mq") using { p =>
+      perfectus("fuseenterprise-mq", p)
+      p.mavenName("maven-3.0.2")
+    }
+    fuseenterprise("fuseesb-7", "esb", "esb") using { p =>
+      perfectus("fuseenterprise-esb", p)
       p.mavenName("maven-3.0.2")
     }
 
@@ -279,6 +287,15 @@ object Main extends Helper {
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	project.removeBuild(_.platform)
 	add(project)
+  }
+
+  def fuseenterprise(branch:String, comp:String, name:String) = {
+    val project = new Project("fuseenterprise-" + name + "-" + branch,
+                                                  new Git("ssh://git@forge.fusesource.com/fuseenterprise.git", None, List(branch)))
+        project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
+        project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
+        project.removeBuild(_.platform)
+        add(project)
   }
 
   val smx_base = "http://fusesource.com/forge/svn/fuseesb"
