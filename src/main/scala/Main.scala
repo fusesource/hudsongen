@@ -123,6 +123,9 @@ object Main extends Helper {
     felix("fuse-trunk", "framework", "framework") using ( perfectus("felix-framework", _) )
     felix("fuse-trunk", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
 
+	// Aries components
+	aries("aries-0.3.x-fuse", "blueprint", "blueprint") using ( perfectus("aries-blueprint", _) )
+
     // ServiceMix Branches
     smx4_nmr("trunk")
     smx4_nmr("nmr-1.2.0-fuse").disable
@@ -283,6 +286,15 @@ object Main extends Helper {
   def felix(branch:String, comp:String, name:String) = {
     val project = new Project("felix-" + name + "-" + branch,
 					          new Git("ssh://git@forge.fusesource.com/felix.git", None, List(branch)))
+	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
+	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
+	project.removeBuild(_.platform)
+	add(project)
+  }
+
+  def aries(branch:String, comp:String, name:String) = {
+    val project = new Project("aries-" + name + "-" + branch,
+					          new Git("ssh://git@forge.fusesource.com/aries.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	project.removeBuild(_.platform)
