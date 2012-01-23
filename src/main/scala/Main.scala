@@ -175,6 +175,8 @@ object Main extends Helper {
     esb_utils("utils-1.5.0-fuse") using ( perfectus("smx-utils", _) ) 
     esb_utils("utils-1.5.1-fuse") using ( perfectus("smx-utils", _) ) 
 
+	esb_specs("specs-2.0.x-fuse")
+
     esb_components("components-2009.01.x").disable
     esb_components("components-2010.01.0-fuse").disable
     esb_components("components-2010.02.0-fuse").disable
@@ -280,6 +282,10 @@ object Main extends Helper {
     add(new Project("smx-" + branch, 
                     new Git("ssh://git@forge.fusesource.com/esbutils.git", None, List(branch))))                    
   
+  def esb_specs(branch: String) =
+    add(new Project("smx4-" + branch,
+                    new Git("ssh://git@forge.fusesource.com/esbspecs.git", None, List(branch))))
+
   def karaf(branch:String) = 
     add(new Project(branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
 
