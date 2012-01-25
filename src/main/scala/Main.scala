@@ -34,7 +34,7 @@ object Main extends Helper {
       p.checkin.maven.profiles = List("distro", "itests")
       p.deploy.maven.profiles = List("distro")
       p.platform.maven.profiles = List("distro")
-      p.deploy.timeout(45)
+      p.deploy.timeout(50)
       p.ircNotify(IrcNotify("fusefabric"), p.checkin, p.deploy)
     }
 
