@@ -109,6 +109,7 @@ object Main extends Helper {
     karaf("karaf-2.0.0-fuse").disable
     karaf("karaf-2.1.x-fuse").disable
     karaf("karaf-2.2.x-fuse")
+    karaf("karaf-2.2.5-fuse")
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
@@ -141,6 +142,10 @@ object Main extends Helper {
       p.mavenName("maven-3.0.2")
     }
     esb_nmr("nmr-1.5.2-fuse") using { p =>
+      perfectus("nmr", p)
+      p.mavenName("maven-3.0.2")
+    }
+    esb_nmr("nmr-1.6.0-fuse") using { p =>
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
     }
