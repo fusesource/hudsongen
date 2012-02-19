@@ -119,10 +119,15 @@ object Main extends Helper {
     felix("4.4.1-fuse", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
     felix("4.4.1-fuse", "webconsole", "webconsole") using ( perfectus("felix-webconsole", _) )
 
-    felix("fuse-trunk", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
-    felix("fuse-trunk", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
-    felix("fuse-trunk", "framework", "framework") using ( perfectus("felix-framework", _) )
-    felix("fuse-trunk", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
+    felix("7.0.x-fuse", "configadmin", "configadmin")
+    felix("7.0.x-fuse", "eventadmin/impl", "eventadmin")
+    felix("7.0.x-fuse", "framework", "framework")
+    felix("7.0.x-fuse", "fileinstall", "fileinstall")
+
+    felix("fuse-trunk", "configadmin", "configadmin")
+    felix("fuse-trunk", "eventadmin/impl", "eventadmin")
+    felix("fuse-trunk", "framework", "framework")
+    felix("fuse-trunk", "fileinstall", "fileinstall")
 
 	// Aries components
 	aries("aries-0.3.x-fuse", "blueprint", "blueprint") using ( perfectus("aries-blueprint", _) )
