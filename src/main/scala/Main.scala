@@ -161,7 +161,10 @@ object Main extends Helper {
     esb_features("features-4.3.1-fuse") 
     esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
     esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
-    esb_features("features-5.0.0-fuse") using ( perfectus("smx4-features", _) ) 
+    esb_features("features-5.0.0-fuse") using { p =>
+      perfectus("smx4-features", p)
+      p.mavenName("maven-3.0.2")
+    }
 
     fuseenterprise("fuseesb-7") using { p =>
       perfectus("fuseenterprise", p)
