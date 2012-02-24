@@ -109,7 +109,9 @@ object Main extends Helper {
     karaf("karaf-2.0.0-fuse").disable
     karaf("karaf-2.1.x-fuse").disable
     karaf("karaf-2.2.x-fuse")
-    karaf("karaf-2.2.5-fuse")
+    karaf("karaf-2.2.5-fuse") using { p =>
+      p.deploy.timeout(90)
+    }
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
