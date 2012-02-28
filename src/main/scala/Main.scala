@@ -132,6 +132,7 @@ object Main extends Helper {
     felix("fuse-trunk", "fileinstall", "fileinstall")
 
 	// Aries components
+	aries("aries-0.3.x-fuse", "util", "util") using ( perfectus("aries-util", _) )
 	aries("aries-0.3.x-fuse", "blueprint", "blueprint") using ( perfectus("aries-blueprint", _) )
 
     // ServiceMix Branches
