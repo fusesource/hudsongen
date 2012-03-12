@@ -56,6 +56,7 @@ object Main extends Helper {
     activemq("trunk-fuse")
     activemq("5.6.x-fuse")
     activemq("5.5.x-fuse")
+    activemq("5.5.1.fuse-7")
     activemq("5.5.1-fuse")
     activemq("5.4.x-fuse") using { p =>
       perfectus("activemq", p)
