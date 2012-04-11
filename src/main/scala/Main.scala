@@ -135,6 +135,8 @@ object Main extends Helper {
 	// Aries components
 	aries("aries-0.3.x-fuse", "util", "util") using ( perfectus("aries-util", _) )
 	aries("aries-0.3.x-fuse", "blueprint", "blueprint") using ( perfectus("aries-blueprint", _) )
+	aries("aries-0.3.x-fuse", "jmx", "jmx") using ( perfectus("aries-jmx", _) )
+	aries("aries-0.3.x-fuse", "transaction", "transaction") using ( perfectus("aries-transaction", _) )
 
     // ServiceMix Branches
     smx4_nmr("trunk")
