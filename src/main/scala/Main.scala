@@ -105,6 +105,7 @@ object Main extends Helper {
     
     //esbsystemtests
     esbsystemtests("kite-4.3.1") 
+    esbsystemtests("kite-4.4.1") 
     
     // Karaf Branches
     karaf("karaf-2.0.0-fuse").disable
