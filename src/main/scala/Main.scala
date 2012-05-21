@@ -51,6 +51,12 @@ object Main extends Helper {
       p.git(_.branches("OSGi"))
       p.deploy.timeout(60)
     }
+    
+    github("koolapp", "koolapp").using { p =>
+      p.deploy.timeout(50)
+      p.ircNotify(IrcNotify("koolapp"), p.checkin, p.deploy)
+    }
+    
 
     // ActiveMQ Branches
     activemq("trunk-fuse")
