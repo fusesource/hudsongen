@@ -138,6 +138,7 @@ object Main extends Helper {
     felix("7.0.x-fuse", "eventadmin/impl", "eventadmin")
     felix("7.0.x-fuse", "framework", "framework")
     felix("7.0.x-fuse", "fileinstall", "fileinstall")
+    felix("7.0.x-fuse", "gogo/runtime", "gogo")
 
     felix("fuse-trunk", "configadmin", "configadmin")
     felix("fuse-trunk", "eventadmin/impl", "eventadmin")
@@ -318,6 +319,7 @@ object Main extends Helper {
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	project.removeBuild(_.platform)
+	project.mavenName("maven-3.0.2")
 	add(project)
   }
 
