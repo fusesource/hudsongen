@@ -161,6 +161,7 @@ object Main extends Helper {
     felix("7.0.x.fuse-stable", "framework", "framework")
     felix("7.0.x.fuse-stable", "fileinstall", "fileinstall")
     felix("7.0.x.fuse-stable", "gogo/runtime", "gogo")
+    felix("7.0.x.fuse-stable", "webconsole", "webconsole") using ( perfectus("felix-webconsole", _) )
 
     felix("fuse-trunk", "configadmin", "configadmin")
     felix("fuse-trunk", "eventadmin/impl", "eventadmin")
