@@ -64,6 +64,7 @@ object Main extends Helper {
     activemq("trunk-fuse")
     activemq("5.6.x-fuse")
     activemq("5.5.x-fuse")
+    activemq("5.5.1.fuse-7-0-x-stable")
     activemq("5.5.1.fuse-7")
     activemq("5.5.1-fuse")
     activemq("5.4.x-fuse") using { p =>
@@ -82,6 +83,10 @@ object Main extends Helper {
 
     // Camel Branches
     camel("trunk-fuse") using { p =>
+      perfectus("camel", p)
+      p.mavenName("maven-3.0.2")
+    }
+    camel("2.9.0.fuse-7-0-x-stable") using { p =>
       perfectus("camel", p)
       p.mavenName("maven-3.0.2")
     }
@@ -111,6 +116,10 @@ object Main extends Helper {
        perfectus("cxf", p)
        p.mavenName("maven-3.0.2")
     }
+    cxf("2.5.0.fuse-7-0-x-stable
+       perfectus("cxf", p)
+       p.mavenName("maven-3.0.2")
+    }
     cxf("2.2.x-fuse").disable
     cxf("2.2.6-fuse").disable
     cxf("2.3.x-fuse")
@@ -129,6 +138,9 @@ object Main extends Helper {
     karaf("karaf-2.2.5-fuse") using { p =>
       p.deploy.timeout(90)
     }
+    karaf("2.2.5.fuse-7-0-x-stable") using { p =>
+      p.deploy.timeout(90)
+    }
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
@@ -144,6 +156,12 @@ object Main extends Helper {
     felix("7.0.x-fuse", "fileinstall", "fileinstall")
     felix("7.0.x-fuse", "gogo/runtime", "gogo")
 
+    felix("7.0.x.fuse-stable", "configadmin", "configadmin")
+    felix("7.0.x.fuse-stable", "eventadmin/impl", "eventadmin")
+    felix("7.0.x.fuse-stable", "framework", "framework")
+    felix("7.0.x.fuse-stable", "fileinstall", "fileinstall")
+    felix("7.0.x.fuse-stable", "gogo/runtime", "gogo")
+
     felix("fuse-trunk", "configadmin", "configadmin")
     felix("fuse-trunk", "eventadmin/impl", "eventadmin")
     felix("fuse-trunk", "framework", "framework")
@@ -154,6 +172,11 @@ object Main extends Helper {
 	aries("aries-0.3.x-fuse", "blueprint", "blueprint") using ( perfectus("aries-blueprint", _) )
 	aries("aries-0.3.x-fuse", "jmx", "jmx") using ( perfectus("aries-jmx", _) )
 	aries("aries-0.3.x-fuse", "transaction", "transaction") using ( perfectus("aries-transaction", _) )
+
+        aries("0.3.1.fuse-7-0-x-stable", "util", "util") using ( perfectus("aries-util", _) )
+        aries("0.3.1.fuse-7-0-x-stable", "blueprint", "blueprint") using ( perfectus("aries-blueprint", _) )
+        aries("0.3.1.fuse-7-0-x-stable", "jmx", "jmx") using ( perfectus("aries-jmx", _) )
+        aries("0.3.1.fuse-7-0-x-stable", "transaction", "transaction") using ( perfectus("aries-transaction", _) )
 
     // ServiceMix Branches
     smx4_nmr("trunk")
@@ -177,6 +200,10 @@ object Main extends Helper {
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
     }
+    esb_nmr("1.6.0.fuse-7-0-x-stable") using { p =>
+      perfectus("nmr", p)
+      p.mavenName("maven-3.0.2")
+    }
 
     smx4_features("trunk")
     smx4_features("features-4.2.0-fuse").disable
@@ -188,8 +215,16 @@ object Main extends Helper {
       perfectus("smx4-features", p)
       p.mavenName("maven-3.0.2")
     }
+    esb_features("4.5.0.fuse-7-0-x-stable") using { p =>
+      perfectus("smx4-features", p)
+      p.mavenName("maven-3.0.2")
+    }
 
     fuseenterprise("fuseesb-7") using { p =>
+      perfectus("fuseenterprise", p)
+      p.mavenName("maven-3.0.2")
+    }
+    fuseenterprise("7.0.x.fuse-stable") using { p =>
       perfectus("fuseenterprise", p)
       p.mavenName("maven-3.0.2")
     }
@@ -202,8 +237,10 @@ object Main extends Helper {
     esb_utils("utils-1.4.x-fuse").disable
     esb_utils("utils-1.5.0-fuse") using ( perfectus("smx-utils", _) ) 
     esb_utils("utils-1.5.1-fuse") using ( perfectus("smx-utils", _) ) 
+    esb_utils("1.5.1.fuse-7-0-x-stable") using ( perfectus("smx-utils", _) )
 
-	esb_specs("specs-2.0.x-fuse") using ( perfectus("smx4-specs", _) )
+    esb_specs("specs-2.0.x-fuse") using ( perfectus("smx4-specs", _) )
+    esb_specs("2.0.0.fuse-7-0-x-stable") using ( perfectus("smx4-specs", _) )
 
     esb_components("components-2009.01.x").disable
     esb_components("components-2010.01.0-fuse").disable
@@ -212,6 +249,7 @@ object Main extends Helper {
     esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
     esb_components("components-2011.02.1-fuse") using ( perfectus("smx-components", _) )
     esb_components("components-2012.01.0-fuse") using ( perfectus("smx-components", _) )
+    esb_components("2012.01.0.fuse-7-0-x-stable") using ( perfectus("smx-components", _) )
 
     // The specs don't have tests so don't need a nightly.
     subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
