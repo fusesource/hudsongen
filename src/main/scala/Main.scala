@@ -306,7 +306,7 @@ object Main extends Helper {
    * instead of the old svn location.
    */  
   def esb_features(branch: String) = {
-    val project = new Project("smx4-" + branch, 
+    val project = new Project("smx4-features-" + branch, 
                               new Git("ssh://git@forge.fusesource.com/esbfeatures.git", None, List(branch)))
     project.deploy.timeout(90)
     project.timeout(90)
@@ -326,7 +326,7 @@ object Main extends Helper {
    * instead of the old svn location.
    */  
   def esb_components(branch: String) = {
-    val project = new Project("smx-" + branch, 
+    val project = new Project("smx-components-" + branch, 
                               new Git("ssh://git@forge.fusesource.com/esbcomponents.git", None, List(branch)))
     project.timeout(2*60)
     add(project)
@@ -337,7 +337,7 @@ object Main extends Helper {
    * instead of the old svn location.
    */
   def esb_nmr(branch: String) =
-    add(new Project("smx4-" + branch, 
+    add(new Project("smx4-nmr-" + branch, 
                     new Git("ssh://git@forge.fusesource.com/esbnmr.git", None, List(branch))))
 
   /*
@@ -345,15 +345,15 @@ object Main extends Helper {
    * instead of the old svn location.
    */
   def esb_utils(branch: String) =
-    add(new Project("smx-" + branch, 
+    add(new Project("smx-utils-" + branch, 
                     new Git("ssh://git@forge.fusesource.com/esbutils.git", None, List(branch))))                    
   
   def esb_specs(branch: String) =
-    add(new Project("smx4-" + branch,
+    add(new Project("smx4-specs-" + branch,
                     new Git("ssh://git@forge.fusesource.com/esbspecs.git", None, List(branch))))
 
   def karaf(branch:String) = 
-    add(new Project(branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
+    add(new Project("karaf-" + branch, new Git("ssh://git@forge.fusesource.com/karaf.git", None, List(branch))))
 
   def felix(branch:String, comp:String, name:String) = {
     val project = new Project("felix-" + name + "-" + branch,
