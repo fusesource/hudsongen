@@ -116,7 +116,7 @@ object Main extends Helper {
        perfectus("cxf", p)
        p.mavenName("maven-3.0.2")
     }
-    cxf("2.5.0.fuse-7-0-x-stable
+    cxf("2.5.0.fuse-7-0-x-stable") using { p =>
        perfectus("cxf", p)
        p.mavenName("maven-3.0.2")
     }
