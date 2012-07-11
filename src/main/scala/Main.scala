@@ -260,10 +260,20 @@ object Main extends Helper {
     servicemix3("3.4.0-fuse").timeout(2*60).disable
     servicemix3("3.5.0-fuse").timeout(2*60).disable
     servicemix3("3.6.0-fuse").timeout(2*60)
+
+    fusecdc("master")
   }
   
   def apollo(branch:String) =  {
     val project = new Project("activemq-apollo-"+branch, new Git("ssh://git@forge.fusesource.com/apollo.git", None, List(branch)))
+    project.timeout(1*60)
+    project.deploy.timeout(60)
+    project.mavenName("maven-3.0.2")
+    add(project)
+  }
+
+  def fusecdc(branch:String) =  {
+    val project = new Project("fusecdc-"+branch, new Git("ssh://git@forge.fusesource.com/fusecdc.git", None, List(branch)))
     project.timeout(1*60)
     project.deploy.timeout(60)
     project.mavenName("maven-3.0.2")
