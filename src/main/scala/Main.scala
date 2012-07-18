@@ -52,11 +52,11 @@ object Main extends Helper {
       p.deploy.timeout(60)
     }
     
-    github("koolapp", "koolapp").using { p =>
+    github("koolio", "kool").using { p =>
       p.mavenName("maven-3.0.2")
       p.jdks("jdk6")
       p.deploy.timeout(50)
-      p.ircNotify(IrcNotify("koolapp"), p.checkin, p.deploy)
+      p.ircNotify(IrcNotify("koolio"), p.checkin, p.deploy)
     }
     
 
