@@ -158,12 +158,12 @@ object Main extends Helper {
     felix("7.0.x-fuse", "fileinstall", "fileinstall")
     felix("7.0.x-fuse", "gogo/runtime", "gogo")
 
-    felix("7.0.x.fuse-stable", "configadmin", "configadmin")
-    felix("7.0.x.fuse-stable", "eventadmin/impl", "eventadmin")
-    felix("7.0.x.fuse-stable", "framework", "framework")
+    felix("7.0.x.fuse-stable", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
+    felix("7.0.x.fuse-stable", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
+    felix("7.0.x.fuse-stable", "framework", "framework") using ( perfectus("felix-framework", _) )
     felix("7.0.x.fuse-stable", "framework.security", "framework.security") using ( perfectus("felix-framework-security", _) )
-    felix("7.0.x.fuse-stable", "fileinstall", "fileinstall")
-    felix("7.0.x.fuse-stable", "gogo/runtime", "gogo")
+    felix("7.0.x.fuse-stable", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
+    felix("7.0.x.fuse-stable", "gogo/runtime", "gogo") using ( perfectus("felix-gogo", _) )
     felix("7.0.x.fuse-stable", "webconsole", "webconsole") using ( perfectus("felix-webconsole", _) )
 
     felix("fuse-trunk", "configadmin", "configadmin")
