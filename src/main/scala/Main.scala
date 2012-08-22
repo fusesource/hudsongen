@@ -86,6 +86,10 @@ object Main extends Helper {
       perfectus("camel", p)
       p.mavenName("maven-3.0.2")
     }
+    camel("2.10.x-fuse") using { p =>
+      perfectus("camel", p)
+      p.mavenName("maven-3.0.2")
+    }
     camel("2.9.0.fuse-7-0-x-stable") using { p =>
       perfectus("camel", p)
       p.mavenName("maven-3.0.2")
