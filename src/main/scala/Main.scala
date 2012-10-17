@@ -160,6 +160,12 @@ object Main extends Helper {
       p.deploy.timeout(90)
       p.jdks("jdk7", "jdk6")
     }
+    karaf("2.3.0.fuse-7-1-x-stable") using { p =>
+      p.deploy.timeout(90)
+      p.jdks("jdk7", "jdk6")
+      p.removeBuild(p.checkin)
+      p.removeBuild(p.platform)
+    }
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
@@ -230,19 +236,19 @@ object Main extends Helper {
         aries("0.3.1.fuse-7-0-x-stable", "jmx", "jmx") using ( perfectus("aries-jmx", _) )
         aries("0.3.1.fuse-7-0-x-stable", "transaction", "transaction") using ( perfectus("aries-transaction", _) )
 
-        aries("0.3.1.fuse-7-1-x-stable", "util", "util") using {  p =>
+        aries("1.0.0.fuse-7-1-x-stable", "util", "util") using {  p =>
           perfectus("aries-util", p) 
           p.jdks("jdk7", "jdk6")
         }
-        aries("0.3.1.fuse-7-1-x-stable", "blueprint", "blueprint") using { p =>
+        aries("1.0.1.fuse-7-1-x-stable", "blueprint", "blueprint") using { p =>
           perfectus("aries-blueprint", p) 
           p.jdks("jdk7", "jdk6")
     	}
-        aries("0.3.1.fuse-7-1-x-stable", "jmx", "jmx") using {  p =>
+        aries("1.0.0.fuse-7-1-x-stable", "jmx", "jmx") using {  p =>
           perfectus("aries-jmx", p) 
           p.jdks("jdk7", "jdk6")
         }
-        aries("0.3.1.fuse-7-1-x-stable", "transaction", "transaction") using {  p =>
+        aries("1.0.0.fuse-7-1-x-stable", "transaction", "transaction") using {  p =>
           perfectus("aries-transaction", p) 
           p.jdks("jdk7", "jdk6")
          }
