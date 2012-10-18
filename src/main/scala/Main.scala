@@ -163,8 +163,6 @@ object Main extends Helper {
     karaf("2.3.0.fuse-7-1-x-stable") using { p =>
       p.deploy.timeout(90)
       p.jdks("jdk7", "jdk6")
-      p.removeBuild(p.checkin)
-      p.removeBuild(p.platform)
     }
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
@@ -473,7 +471,6 @@ object Main extends Helper {
 					          new Git("ssh://git@forge.fusesource.com/felix.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
-	project.removeBuild(_.platform)
 	project.mavenName("maven-3.0.2")
 	add(project)
   }
@@ -483,7 +480,6 @@ object Main extends Helper {
 					          new Git("ssh://git@forge.fusesource.com/aries.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
-	project.removeBuild(_.platform)
 	add(project)
   }
 
