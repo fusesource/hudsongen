@@ -238,7 +238,7 @@ object Main extends Helper {
           perfectus("aries-util", p) 
           p.jdks("jdk7", "jdk6")
         }
-        aries("1.0.1.fuse-7-1-x-stable", "blueprint", "blueprint") using { p =>
+        aries("1.0.0.fuse-7-1-x-stable", "blueprint", "blueprint") using { p =>
           perfectus("aries-blueprint", p) 
           p.jdks("jdk7", "jdk6")
     	}
