@@ -156,10 +156,7 @@ object Main extends Helper {
     karaf("2.2.5.fuse-7-0-x-stable") using { p =>
       p.deploy.timeout(90)
     }
-    karaf("2.2.5.fuse-7-1-x-stable") using { p =>
-      p.deploy.timeout(90)
-      p.jdks("jdk7", "jdk6")
-    }
+    
     karaf("2.3.0.fuse-7-1-x-stable") using { p =>
       p.deploy.timeout(90)
       p.jdks("jdk7", "jdk6")
@@ -311,7 +308,8 @@ object Main extends Helper {
       perfectus("fuseenterprise", p)
       p.mavenName("maven-3.0.2")
     }
-    fuseenterprise("7.1.x.fuse-stable") using { p =>
+    
+    fuseenterprise("master") using { p =>  // For "7.1.x.fuse-stable"
       perfectus("fuseenterprise", p)
       p.mavenName("maven-3.0.2")
       p.jdks("jdk7", "jdk6")
@@ -331,6 +329,10 @@ object Main extends Helper {
       p.jdks("jdk7", "jdk6")
     }
 
+    esb_archetypes("2012.01.0.fuse-7-1-x-stable") using { p =>
+      p.jdks("jdk7", "jdk6")
+    }
+    
     esb_specs("specs-2.0.x-fuse") using ( perfectus("smx4-specs", _) )
     esb_specs("2.0.0.fuse-7-0-x-stable") using ( perfectus("smx4-specs", _) )
     esb_specs("2.0.0.fuse-7-1-x-stable") using { p =>
@@ -422,16 +424,25 @@ object Main extends Helper {
     project.deploy.timeout(90)
     project.timeout(90)
     add(project)
-  }    
- 
-  def fuseenterprise(branch: String) = {
-    val project = new Project("fuseenterprise-" + branch,
-                              new Git("ssh://git@forge.fusesource.com/fuseenterprise.git", None, List(branch)))
+  }
+
+  def fuseenterprise(branch: String):Project = {
+    val repoUrl = branch match {
+      case "master" => "git@github.com:fusesource/fuse.git"
+      case _ => "ssh://git@forge.fusesource.com/fuseenterprise.git"
+    }
+    //val project = new Project("fuseenterprise-" + branch, new Git("ssh://git@forge.fusesource.com/fuseenterprise.git", None, List(branch)))
+    val project = new Project("fuseenterprise-" + branch, new Git(repoUrl, None, List(branch)))
     project.deploy.timeout(90)
     project.timeout(90)
     add(project)
   }
- 
+  
+  def esb_archetypes(branch: String) =
+    add(new Project("archetypes-" + branch, 
+                    new Git("ssh://git@forge.fusesource.com/esbarchetypes.git", None, List(branch))))
+
+                    
   /*
    * Starting with FUSE ESB JBI Components 2011.01.0-fuse, branches are being maintained in this git repository
    * instead of the old svn location.
