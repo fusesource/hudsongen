@@ -214,6 +214,10 @@ object Main extends Helper {
       perfectus("felix-webconsole", p) 
       p.jdks("jdk7", "jdk6")
     }
+    felix("7.1.x.fuse-stable", "utils", "utils") using {  p =>
+      perfectus("felix-utils", p)
+      p.jdks("jdk7", "jdk6")
+    }
 
     felix("fuse-trunk", "configadmin", "configadmin")
     felix("fuse-trunk", "eventadmin/impl", "eventadmin")
