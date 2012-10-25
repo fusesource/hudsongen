@@ -62,7 +62,7 @@ object Main extends Helper {
 
     // ActiveMQ Branches
     activemq("trunk-fuse")
-    activemq("5.6.1.fuse-7-1-x-stable") using { p => p.jdks("jdk7", "jdk6")}
+    activemq("5.7.0.fuse-7-1-x-stable") using { p => p.jdks("jdk7", "jdk6")}
     activemq("5.6.x-fuse")
     activemq("5.5.x-fuse")
     activemq("5.5.1.fuse-7-0-x-stable")
