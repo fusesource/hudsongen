@@ -186,6 +186,10 @@ object Main extends Helper {
     felix("7.0.x.fuse-stable", "gogo/runtime", "gogo") using ( perfectus("felix-gogo", _) )
     felix("7.0.x.fuse-stable", "webconsole", "webconsole") using ( perfectus("felix-webconsole", _) )
 
+    felix("7.1.x.fuse-stable", "utils", "utils") using {  p =>
+      perfectus("felix-utils", p)
+      p.jdks("jdk7", "jdk6")
+    }
     felix("7.1.x.fuse-stable", "configadmin", "configadmin") using {  p => 
       perfectus("felix-configadmin", p) 
       p.jdks("jdk7", "jdk6")
@@ -212,10 +216,6 @@ object Main extends Helper {
     }
     felix("7.1.x.fuse-stable", "webconsole", "webconsole") using {  p => 
       perfectus("felix-webconsole", p) 
-      p.jdks("jdk7", "jdk6")
-    }
-    felix("7.1.x.fuse-stable", "utils", "utils") using {  p =>
-      perfectus("felix-utils", p)
       p.jdks("jdk7", "jdk6")
     }
 
