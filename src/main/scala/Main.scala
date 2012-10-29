@@ -164,6 +164,7 @@ object Main extends Helper {
       p.deploy.timeout(90)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
@@ -194,41 +195,52 @@ object Main extends Helper {
       perfectus("felix-utils", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "configadmin", "configadmin") using {  p => 
       perfectus("felix-configadmin", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "eventadmin/impl", "eventadmin") using {  p => 
       perfectus("felix-eventadmin", p) 
       p.jdks("jdk7", "jdk6")
+      p.checkin.junitPublisher=None	// This build has no tests
+      p.platform.junitPublisher=None
       p.labels=platformsFor71
     }
     felix("7.1.x.fuse-stable", "framework", "framework") using {  p => 
       perfectus("felix-framework", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "framework.security", "framework.security") using {  p => 
       perfectus("felix-framework-security", p) 
       p.jdks("jdk7", "jdk6")
+      p.checkin.junitPublisher=None	// This build has no tests
+      p.platform.junitPublisher=None
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "fileinstall", "fileinstall") using {  p => 
       perfectus("felix-fileinstall", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "gogo/runtime", "gogo") using {  p => 
       perfectus("felix-gogo", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "webconsole", "webconsole") using {  p => 
       perfectus("felix-webconsole", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
 
     felix("fuse-trunk", "configadmin", "configadmin")
@@ -251,21 +263,25 @@ object Main extends Helper {
           perfectus("aries-util", p) 
           p.jdks("jdk7", "jdk6")
           p.labels=platformsFor71
+          p.mavenName("maven-3.0.2")
         }
         aries("1.0.0.fuse-7-1-x-stable", "blueprint", "blueprint") using { p =>
           perfectus("aries-blueprint", p) 
           p.jdks("jdk7", "jdk6")
           p.labels=platformsFor71
+          p.mavenName("maven-3.0.2")
     	}
         aries("1.0.0.fuse-7-1-x-stable", "jmx", "jmx") using {  p =>
           perfectus("aries-jmx", p) 
           p.jdks("jdk7", "jdk6")
           p.labels=platformsFor71
+          p.mavenName("maven-3.0.2")
         }
         aries("1.0.0.fuse-7-1-x-stable", "transaction", "transaction") using {  p =>
           perfectus("aries-transaction", p) 
           p.jdks("jdk7", "jdk6")
           p.labels=platformsFor71
+          p.mavenName("maven-3.0.2")
          }
 
     // ServiceMix Branches
@@ -299,6 +315,7 @@ object Main extends Helper {
       p.mavenName("maven-3.0.2")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
 
     smx4_features("trunk")
@@ -351,11 +368,13 @@ object Main extends Helper {
       perfectus("smx-utils", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
 
     esb_archetypes("2012.01.0.fuse-7-1-x-stable") using { p =>
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
     
     esb_specs("specs-2.0.x-fuse") using ( perfectus("smx4-specs", _) )
@@ -364,6 +383,7 @@ object Main extends Helper {
       perfectus("smx4-specs", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
 
     esb_components("components-2009.01.x").disable
@@ -378,6 +398,7 @@ object Main extends Helper {
       perfectus("smx-components", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.mavenName("maven-3.0.2")
     }
 
     // The specs don't have tests so don't need a nightly.
