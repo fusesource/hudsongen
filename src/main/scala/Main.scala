@@ -165,6 +165,7 @@ object Main extends Helper {
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
       p.mavenName("maven-3.0.2")
+      p.builds = p.dualjdk :: p.builds
     }
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
@@ -214,6 +215,7 @@ object Main extends Helper {
       perfectus("felix-framework", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.builds = p.dualjdk :: p.builds
       p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "framework.security", "framework.security") using {  p => 
@@ -234,6 +236,7 @@ object Main extends Helper {
       perfectus("felix-gogo", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
+      p.builds = p.dualjdk :: p.builds
       p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "webconsole", "webconsole") using {  p => 
@@ -241,6 +244,7 @@ object Main extends Helper {
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
       p.mavenName("maven-3.0.2")
+      p.builds = p.dualjdk :: p.builds
     }
 
     felix("fuse-trunk", "configadmin", "configadmin")
@@ -276,6 +280,7 @@ object Main extends Helper {
           p.jdks("jdk7", "jdk6")
           p.labels=platformsFor71
           p.mavenName("maven-3.0.2")
+          p.builds = p.dualjdk :: p.builds
         }
         aries("1.0.0.fuse-7-1-x-stable", "transaction", "transaction") using {  p =>
           perfectus("aries-transaction", p) 
@@ -384,6 +389,7 @@ object Main extends Helper {
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
       p.mavenName("maven-3.0.2")
+      p.builds = p.dualjdk :: p.builds
     }
 
     esb_components("components-2009.01.x").disable

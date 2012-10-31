@@ -1,0 +1,39 @@
+!!! XML
+project
+  actions
+  description
+  keepDependencies false
+  != capture(include("common.jade"))
+  assignedNode ubuntu
+  canRoam false
+  blockBuildWhenUpstreamBuilding false
+  jdk jdk6
+  triggers.vector
+    'hudson.triggers.SCMTrigger'
+      spec @weekly
+  concurrentBuild false
+  buildWrappers
+    'hudson.plugins.build__timeout.BuildTimeoutWrapper'
+      timeoutMinutes= project.checkin.timeout
+      failBuild false
+  builders
+    'hudson.tasks.Maven'
+      - if ( build.maven.name.startsWith("maven-3") ) 
+        targets --settings ${HOME}/.m2/m3-settings.xml -V -B -fae clean compile #{build.maven.goalsArguments}
+      - else
+        targets -V -B -fae clean install #{build.maven.goalsArguments}
+      mavenName #{build.maven.name}
+      jvmOptions #{project.jvmOpts}
+      pom #{build.maven.rootPom}
+      usePrivateRepository false
+      -# properties>prop1=prop2</properties>
+    'hudson.tasks.Shell'
+      command 
+        | export JAVA_HOME=/opt/jdk7
+        | export PATH=$JAVA_HOME/bin:$PATH
+        - if ( build.maven.name.startsWith("maven-3") )
+          | ${HOME}/tools/maven-3.0.2/bin/mvn -f #{build.maven.rootPom} --settings ${HOME}/.m2/m3-settings.xml -V -B -fae install   
+        - else
+          | ${HOME}/tools/maven-2.2.1/bin/mvn -f framework/pom.xml --settings ${HOME}/.m2/m3-settings.xml -V -B -fae install   
+
+    
