@@ -130,6 +130,11 @@ case class Project(val name:String, val scm:SCM) {
 
   var builds: List[Build] = List(checkin, platform, deploy)		
 
+  def addBuild(b: Build): this.type = {
+     builds = b :: builds
+     this
+  }
+  
   def removeBuild(b: Build): this.type =  {
     builds = builds filterNot(_ == b)
     this

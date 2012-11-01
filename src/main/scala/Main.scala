@@ -215,7 +215,7 @@ object Main extends Helper {
       perfectus("felix-framework", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.builds = p.dualjdk :: p.builds
+      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.2")
     }
     felix("7.1.x.fuse-stable", "framework.security", "framework.security") using {  p => 
@@ -535,6 +535,7 @@ object Main extends Helper {
     val project = new Project("felix-" + name + "-" + branch,
 					          new Git("ssh://git@forge.fusesource.com/felix.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
+	project.dualjdk.maven.rootPom = comp + "/pom.xml"
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	project.mavenName("maven-3.0.2")
 	add(project)
@@ -544,6 +545,7 @@ object Main extends Helper {
     val project = new Project("aries-" + name + "-" + branch,
 					          new Git("ssh://git@forge.fusesource.com/aries.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
+	project.dualjdk.maven.rootPom = comp + "/pom.xml"
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	add(project)
   }
