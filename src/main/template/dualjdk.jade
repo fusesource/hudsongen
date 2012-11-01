@@ -32,8 +32,8 @@ project
         | export JAVA_HOME=/opt/jdk7
         | export PATH=$JAVA_HOME/bin:$PATH
         - if ( build.maven.name.startsWith("maven-3") )
-          | ${HOME}/tools/maven-3.0.2/bin/mvn -f #{build.maven.rootPom} --settings ${HOME}/.m2/m3-settings.xml -V -B -fae install   
+          | ${HUDSON_HOME}/tools/maven-3.0.2/bin/mvn -f #{build.maven.rootPom} --settings ${HOME}/.m2/m3-settings.xml -V -B -fae install   
         - else
-          | ${HOME}/tools/maven-2.2.1/bin/mvn -f framework/pom.xml --settings ${HOME}/.m2/m3-settings.xml -V -B -fae install   
+          | ${HUDSON_HOME}/tools/maven-2.2.1/bin/mvn -f framework/pom.xml --settings ${HOME}/.m2/m3-settings.xml -V -B -fae install   
 
     
