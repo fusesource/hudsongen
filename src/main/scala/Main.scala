@@ -18,6 +18,7 @@ object Main extends Helper {
     github("fusesource", "wikitext").git(_.branches("origin"))
 
     github("scalate", "scalate").using { p =>
+      p.git(_.branches("master", "scala_next"))
       p.mavenName("maven-3.0.2")
       // Run the build on jdk 5 and 6 since the core should be JDK 1.5 compatible,
       // but we also want to test the java 6 features like Jersey integration.
