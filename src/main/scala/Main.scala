@@ -66,6 +66,13 @@ object Main extends Helper {
       p.deploy.timeout(60)
     }
     
+    github("chirino", "resty-gwt").using { p => 
+      p.mavenName("maven-3.0.2")
+      p.checkin.maven.profiles = List("run-its")
+      p.jdks("jdk6")
+      p.builds = List(p.checkin, p.deploy)   
+      p.ircNotify(IrcNotify("restygwt"), p.checkin, p.deploy)
+    }
     github("koolio", "kool").using { p =>
       p.mavenName("maven-3.0.2")
       p.jdks("jdk6")
