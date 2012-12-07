@@ -79,6 +79,11 @@ object Main extends Helper {
       p.deploy.timeout(50)
       p.ircNotify(IrcNotify("koolio"), p.checkin, p.deploy)
     }
+    github("hawtio", "hawtio").using { p =>
+      p.mavenName("maven-3.0.2")
+      p.deploy.timeout(50)
+      p.ircNotify(IrcNotify("hawtio"), p.checkin, p.deploy)
+    }
     
 
     // ActiveMQ Branches
