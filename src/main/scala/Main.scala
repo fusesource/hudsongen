@@ -3,7 +3,7 @@ import java.io._
 object Main extends Helper {
 
   protected def configure = {
-    val platformsFor71 = List("ubuntu", "windows", "aix7", "Solaris")   // 7.1.x platforms 
+    val platformsFor71 = List("ubuntu", "windows", "aix7", "Solaris", "rhel")   // 7.1.x platforms 
     // FuseForge Projects
     forge_git("jansi")
     // forge_git("console")
