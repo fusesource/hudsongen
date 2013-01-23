@@ -155,6 +155,10 @@ object Main extends Helper {
        perfectus("cxf", p)
        p.mavenName("maven-3.0.2")
     }
+    cxf("2.7.x-fuse") using { p =>
+       perfectus("cxf", p)
+       p.mavenName("maven-3.0.2")
+    }
     cxf("2.6.0.fuse-7-1-x-stable") using { p =>
        perfectus("cxf", p)
        p.addBuild(p.dualjdk)
