@@ -690,7 +690,7 @@ object Main extends Helper {
     val project = new Project("smx4-features-" + branch, 
                               new Git("ssh://git@forge.fusesource.com/esbfeatures.git", None, List(branch)))
     project.deploy.timeout(90)
-    project.timeout(90)
+    project.timeout(180)
     add(project)
   }
 
