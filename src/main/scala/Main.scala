@@ -92,6 +92,8 @@ object Main extends Helper {
       p => p.jdks("jdk7", "jdk6");
       p.labels=platformsFor71;
       p.addBuild(p.dualjdk)
+      p.checkin.maven.profiles = List("activemq.tests-all")
+      p.platform.maven.profiles = List("activemq.tests-all")
       p.mavenName("maven-3.0.4")
     }
     activemq("5.7.0.fuse-7-1-x-stable") using { 
