@@ -451,7 +451,13 @@ object Main extends Helper {
       p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
      }
-
+    aries("1.0.1.fuse-7-2-x-stable", "proxy", "proxy") using {  p =>
+      perfectus("aries-proxy", p)
+      p.jdks("jdk7", "jdk6")
+      p.labels=platformsFor71
+      p.addBuild(p.dualjdk)
+      p.mavenName("maven-3.0.4")
+     }
 
     // ServiceMix Branches
     smx4_nmr("trunk")
