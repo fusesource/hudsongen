@@ -659,7 +659,7 @@ object Main extends Helper {
 
   def activemq(branch:String) =  {
     val project = new Project("activemq-"+branch, new Git("ssh://git@forge.fusesource.com/activemq.git", None, List(branch)))
-    project.timeout(10*60)
+    project.timeout(15*60)
     project.deploy.timeout(60)
     project.mavenName("maven-3.0.2")
     add(project)
