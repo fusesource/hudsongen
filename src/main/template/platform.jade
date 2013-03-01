@@ -8,7 +8,7 @@ matrix-project
   blockBuildWhenUpstreamBuilding false
   triggers.vector
     'hudson.triggers.SCMTrigger'
-      spec @weekly
+      spec 0 0 * * 6
   concurrentBuild false
   axes
     'hudson.matrix.JDKAxis'
