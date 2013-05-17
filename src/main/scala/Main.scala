@@ -87,7 +87,7 @@ object Main extends Helper {
     
 
     // ActiveMQ Branches
-    activemq("trunk-fuse")
+    activemq("trunk")
     activemq("5.8.0.fuse-7-2-x-stable") using {
       p => p.jdks("jdk7", "jdk6");
       p.labels=platformsFor71;
