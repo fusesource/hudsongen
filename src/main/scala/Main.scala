@@ -85,15 +85,33 @@ object Main extends Helper {
       p.ircNotify(IrcNotify("hawtio"), p.checkin, p.deploy)
     }
     
+    // ActiveMQ Apache Branches
+    add(Project("activemq-trunk", new GitHub("apache", "activemq"))).using { p =>
+      p.git(_.branches("trunk"))
+      p.jdks("jdk6", "jdk7")
+      p.timeout(15*60)
+      p.mavenName("maven-3.0.4")
+      p.checkin.maven.goals = List("-Dactivemq.tests=all")
+      p.platform.maven.goals = List("-Dactivemq.tests=all")
+      p.ircNotify(IrcNotify("activemq"), p.checkin, p.platform)
+    }
 
-    // ActiveMQ Branches
-    activemq("trunk")
+    add(Project("activemq-apollo-trunk", new GitHub("apache", "activemq-apollo"))).using { p =>
+      p.git(_.branches("trunk"))
+      p.jdks("jdk6", "jdk7")
+      p.timeout(2*60)
+      p.mavenName("maven-3.0.4")
+      p.checkin.maven.profiles = List("itests")
+      p.platform.maven.profiles = List("itests")
+      p.builds = List(p.checkin, p.platform)   
+      p.ircNotify(IrcNotify("activemq"), p.checkin, p.platform)
+    }
+
+    // ActiveMQ Product Branches
     activemq("5.8.0.fuse-7-2-x-stable") using {
       p => p.jdks("jdk7", "jdk6");
       p.labels=platformsFor71;
       p.addBuild(p.dualjdk)
-      p.checkin.maven.profiles = List("activemq.tests-all")
-      p.platform.maven.profiles = List("activemq.tests-all")
       p.mavenName("maven-3.0.4")
     }
     activemq("5.7.0.fuse-7-1-x-stable") using { 
