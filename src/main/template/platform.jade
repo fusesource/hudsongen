@@ -6,6 +6,7 @@ matrix-project
   != capture(include("common.jade"))
   canRoam true
   blockBuildWhenUpstreamBuilding false
+  scmCheckoutRetryCount 3
   triggers.vector
     'hudson.triggers.SCMTrigger'
       spec 0 0 * * 6
