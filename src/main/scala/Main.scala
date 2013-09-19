@@ -482,6 +482,13 @@ object Main extends Helper {
       p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
+    felix("6.1.x.redhat-stable", "scr", "scr") using {  p =>
+      perfectus("felix-scr", p)
+      p.jdks("jdk7", "jdk6")
+      p.labels=platformsFor71
+      p.addBuild(p.dualjdk)
+      p.mavenName("maven-3.0.4")
+    }
     felix("6.1.x.redhat-stable", "webconsole", "webconsole") using {  p =>
       perfectus("felix-webconsole", p)
       p.jdks("jdk7", "jdk6")
@@ -603,6 +610,14 @@ object Main extends Helper {
     }
     aries("1.0.1.redhat-6-1-x-stable", "proxy", "proxy") using {  p =>
       perfectus("aries-proxy", p)
+      p.jdks("jdk7", "jdk6")
+      p.labels=platformsFor71
+      p.addBuild(p.dualjdk)
+      p.mavenName("maven-3.0.4")
+    }
+
+    aries("1.0.1.redhat-6-1-x-stable", "jpa", "jpa") using {  p =>
+      perfectus("aries-jpa", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
       p.addBuild(p.dualjdk)
