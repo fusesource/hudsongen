@@ -733,6 +733,16 @@ object Main extends Helper {
       p.labels=platformsFor71
     }
 
+    fuseenterprise("6.1.x.redhat-stable") using { p =>  
+      // perfectus("fuseenterprise", p)
+      p.addBuild(p.dualjdk)
+      p.mavenName("maven-3.0.4")
+      p.jdks("jdk7", "jdk6")
+      p.labels=platformsFor71
+    }
+
+
+
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.x-fuse")
     
