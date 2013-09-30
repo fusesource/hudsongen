@@ -626,7 +626,7 @@ object Main extends Helper {
 
 
     // ServiceMix Branches
-    smx4_nmr("trunk")
+    smx4_nmr("trunk").disable
     smx4_nmr("nmr-1.2.0-fuse").disable
     smx4_nmr("nmr-1.3.0-fuse").disable
     esb_nmr("nmr-1.4.x-fuse").disable
@@ -678,7 +678,7 @@ object Main extends Helper {
       p.mavenName("maven-3.0.4")
     }
 
-    smx4_features("trunk")
+    smx4_features("trunk").disable
     smx4_features("features-4.2.0-fuse").disable
     smx4_features("features-4.3.0-fuse").disable
     esb_features("features-4.3.1-fuse") 
@@ -746,7 +746,7 @@ object Main extends Helper {
     smx_maven_plugins("trunk")
     smx_maven_plugins("maven-plugins-4.3.x-fuse")
     
-    smx_utils("trunk")
+    smx_utils("trunk").disable
     smx_utils("utils-1.3.0-fuse").disable
     esb_utils("utils-1.4.x-fuse").disable
     esb_utils("utils-1.5.0-fuse") using ( perfectus("smx-utils", _) ) 
@@ -851,7 +851,7 @@ object Main extends Helper {
     }
 
     // The specs don't have tests so don't need a nightly.
-    subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform) 
+    subversion("smx4-specs-trunk-fuse", "http://fusesource.com/forge/svn/fuseesb/smx4/specs/trunk").removeBuild(_.platform).disable
 
     // ServiceMix 3
     servicemix3("3.3.1-fuse").timeout(2*60).disable
@@ -1009,7 +1009,7 @@ object Main extends Helper {
   }
   
   def smx_maven_plugins(branch:String) =  branch match {
-    case "trunk" => subversion("smx-maven-plugins-trunk-fuse", smx_base+"/maven-plugins/trunk")
+    case "trunk" => subversion("smx-maven-plugins-trunk-fuse", smx_base+"/maven-plugins/trunk").disable
     case branch => subversion("smx-"+branch, smx_base+"/maven-plugins/branches/"+branch)
   }
   
