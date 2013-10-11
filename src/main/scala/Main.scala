@@ -725,7 +725,15 @@ object Main extends Helper {
       p.mavenName("maven-3.0.2")
     }
     
-    fuseenterprise("master") using { p =>  // For "7.1.x.fuse-stable"
+    fuseenterprise("7.1.x.fuse-stable") using { p => 
+      perfectus("fuseenterprise", p)
+      p.addBuild(p.dualjdk)
+      p.mavenName("maven-3.0.4")
+      p.jdks("jdk7", "jdk6")
+      p.labels=platformsFor71
+    }
+    
+    fuseenterprise("7.2.x.fuse-stable") using { p => 
       perfectus("fuseenterprise", p)
       p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
