@@ -19,9 +19,9 @@ project
   builders
     'hudson.tasks.Maven'
       - if ( build.maven.name.startsWith("maven-3") ) 
-        targets --settings ${HOME}/.m2/m3-settings.xml -V -B -fae  -Dmaven.test.skip=true clean install #{build.maven.goalsArguments}
+        targets --show-version --batch-mode --fail-never clean install #{build.maven.goalsArguments}
       - else
-        targets -V -B -fae -Dmaven.test.skip=true clean install #{build.maven.goalsArguments}
+        targets --settings ${HOME}/.m2/m2-settings.xml --show-version --batch-mode --fail-never clean install #{build.maven.goalsArguments}
       mavenName #{build.maven.name}
       jvmOptions #{project.jvmOpts}
       pom #{build.maven.rootPom}
