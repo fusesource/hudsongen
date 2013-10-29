@@ -26,9 +26,9 @@ matrix-project
     'hudson.tasks.Maven'
       mavenName #{build.maven.name}
       - if ( build.maven.name.startsWith("maven-3") ) 
-        targets --show-version --batch-mode --fail-never -Djava.io.tmpdir=${TMP} clean install #{build.maven.goalsArguments}
+        targets --show-version --batch-mode --fail-never clean install #{build.maven.goalsArguments}
       - else
-        targets --settings ${HOME}/.m2/m2-settings.xml --show-version --batch-mode --fail-never -Djava.io.tmpdir=${TMP} clean install #{build.maven.goalsArguments}
+        targets --settings ${HOME}/.m2/m2-settings.xml --show-version --batch-mode --fail-never clean install #{build.maven.goalsArguments}
       pom #{build.maven.rootPom}
       jvmOptions #{project.jvmOpts}
       usePrivateRepository false
