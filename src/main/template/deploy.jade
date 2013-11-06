@@ -19,9 +19,9 @@ project
   builders
     'hudson.tasks.Maven'
       - if ( build.maven.name.startsWith("maven-3") ) 
-        targets --settings ${HOME}/.m2/m3-settings.xml -V -B -fae -Dtest=false -DfailIfNoTests=false clean deploy #{build.maven.goalsArguments}
+        targets --settings ${HOME}/.m2/m3-settings.xml -Ddeploy.altRepository=fusesource-nexus-snapshots::default::https://repository.jboss.org/nexus/content/repositories/fs-snapshots -DaltDeploymentRepository=fusesource-nexus-snapshots::default::https://repository.jboss.org/nexus/content/repositories/fs-snapshots -V -B -fae -Dtest=false -DfailIfNoTests=false clean deploy #{build.maven.goalsArguments}
       - else
-        targets -V -B -fae -Dtest=false -DfailIfNoTests=false clean deploy #{build.maven.goalsArguments}
+        targets -Ddeploy.altRepository=fusesource-nexus-snapshots::default::https://repository.jboss.org/nexus/content/repositories/fs-snapshots -DaltDeploymentRepository=fusesource-nexus-snapshots::default::https://repository.jboss.org/nexus/content/repositories/fs-snapshots -V -B -fae -Dtest=false -DfailIfNoTests=false clean deploy #{build.maven.goalsArguments}
       mavenName #{build.maven.name}
       jvmOptions #{project.jvmOpts}
       pom #{build.maven.rootPom}
