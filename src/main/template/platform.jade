@@ -26,7 +26,7 @@ matrix-project
     'hudson.tasks.Maven'
       mavenName #{build.maven.name}
       - if ( build.maven.name.startsWith("maven-3") ) 
-        targets --show-version --batch-mode --fail-at-end clean install #{build.maven.goalsArguments}
+        targets --settings ${HOME}/.m2/m3-settings.xml --show-version --batch-mode --fail-never  clean install #{build.maven.goalsArguments}
       - else
         targets --settings ${HOME}/.m2/m2-settings.xml --show-version --batch-mode --fail-at-end clean install #{build.maven.goalsArguments}
       pom #{build.maven.rootPom}
