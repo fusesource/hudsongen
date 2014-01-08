@@ -19,7 +19,7 @@ project
   builders
     'hudson.tasks.Maven'
       - if ( build.maven.name.startsWith("maven-3") ) 
-        targets --settings ${HOME}/.m2/m3-settings.xml --show-version --batch-mode --fail-never  clean install #{build.maven.goalsArguments}
+        targets --settings ${HOME}/.m2/m3-settings.xml --show-version --batch-mode --fail-at-end  clean install #{build.maven.goalsArguments}
       - else
         targets --settings ${HOME}/.m2/m2-settings.xml --show-version --batch-mode --fail-at-end  clean install #{build.maven.goalsArguments}
       mavenName #{build.maven.name}
