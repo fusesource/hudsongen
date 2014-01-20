@@ -37,7 +37,7 @@ case class Parameter(name: String, description:String="", value:String="", kind:
 
 case class IrcNotify(room: String)
 
-case class JUnitPublisher(testResults: String = "**/target/surefire-reports/*.xml")
+case class JUnitPublisher(testResults: String = "**/target/*-reports/*.xml")
 
 case class Build(name: String) {
   var template: String = name + ".jade"
