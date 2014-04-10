@@ -10,7 +10,7 @@ project
   jdk= project.jdks.head
   triggers.vector
     'hudson.triggers.SCMTrigger'
-      spec */15 * * * *
+      spec H/15 * * * *
   concurrentBuild false
   buildWrappers
     'hudson.plugins.build__timeout.BuildTimeoutWrapper'
