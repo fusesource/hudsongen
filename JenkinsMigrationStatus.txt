@@ -1,0 +1,1 @@
+This file is for notes about the status of the migration from Hudson on EC2 to Jenkins on OpenStack.
