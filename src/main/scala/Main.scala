@@ -111,20 +111,17 @@ object Main extends Helper {
     activemq("5.9.0.redhat-6-1-x-stable") using {
       p => p.jdks("jdk7", "jdk6");
         p.labels=platformsFor71;
-        p.addBuild(p.dualjdk)
         p.mavenName("maven-3.0.4")
     }
 
     activemq("5.8.0.fuse-7-2-x-stable") using {
       p => p.jdks("jdk7", "jdk6");
       p.labels=platformsFor71;
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     activemq("5.7.0.fuse-7-1-x-stable") using { 
       p => p.jdks("jdk7", "jdk6"); 
       p.labels=platformsFor71; 
-      p.addBuild(p.dualjdk) 
       p.mavenName("maven-3.0.4")
     }
     activemq("5.6.x-fuse")
@@ -154,7 +151,6 @@ object Main extends Helper {
 
     camel("2.12.0.redhat-6-1-x-stable") using { p =>
       perfectus("camel", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
@@ -162,14 +158,12 @@ object Main extends Helper {
 
     camel("2.10.0.fuse-7-2-x-stable") using { p =>
       perfectus("camel", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
     }
     camel("2.10.0.fuse-7-1-x-stable") using { p =>
       perfectus("camel", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
@@ -212,7 +206,6 @@ object Main extends Helper {
 
     cxf("2.7.0.redhat-6-1-x-stable") using { p =>
       perfectus("cxf", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
@@ -220,14 +213,12 @@ object Main extends Helper {
 
     cxf("2.6.0.fuse-7-2-x-stable") using { p =>
        perfectus("cxf", p)
-       p.addBuild(p.dualjdk)
        p.mavenName("maven-3.0.4")
        p.jdks("jdk7", "jdk6")
        p.labels=platformsFor71
     }
     cxf("2.6.0.fuse-7-1-x-stable") using { p =>
        perfectus("cxf", p)
-       p.addBuild(p.dualjdk)
        p.mavenName("maven-3.0.4")
        p.jdks("jdk7", "jdk6")
        p.labels=platformsFor71
@@ -266,14 +257,12 @@ object Main extends Helper {
       p.deploy.timeout(90)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     karaf("2.3.0.fuse-7-2-x-stable") using { p =>
       p.deploy.timeout(90)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -281,7 +270,6 @@ object Main extends Helper {
       p.deploy.timeout(90)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -314,14 +302,12 @@ object Main extends Helper {
       perfectus("felix-utils", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.1.x.fuse-stable", "configadmin", "configadmin") using {  p => 
       perfectus("felix-configadmin", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.1.x.fuse-stable", "eventadmin/impl", "eventadmin") using {  p => 
@@ -336,7 +322,6 @@ object Main extends Helper {
       perfectus("felix-framework", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.1.x.fuse-stable", "framework.security", "framework.security") using {  p => 
@@ -351,21 +336,18 @@ object Main extends Helper {
       perfectus("felix-fileinstall", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.1.x.fuse-stable", "gogo/runtime", "gogo") using {  p => 
       perfectus("felix-gogo", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.1.x.fuse-stable", "webconsole", "webconsole") using {  p => 
       perfectus("felix-webconsole", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     
@@ -375,14 +357,12 @@ object Main extends Helper {
       perfectus("felix-utils", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.2.x.fuse-stable", "configadmin", "configadmin") using {  p => 
       perfectus("felix-configadmin", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.2.x.fuse-stable", "eventadmin/impl", "eventadmin") using {  p => 
@@ -397,7 +377,6 @@ object Main extends Helper {
       perfectus("felix-framework", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.2.x.fuse-stable", "framework.security", "framework.security") using {  p => 
@@ -412,21 +391,18 @@ object Main extends Helper {
       perfectus("felix-fileinstall", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.2.x.fuse-stable", "gogo/runtime", "gogo") using {  p => 
       perfectus("felix-gogo", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("7.2.x.fuse-stable", "webconsole", "webconsole") using {  p => 
       perfectus("felix-webconsole", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -435,14 +411,12 @@ object Main extends Helper {
       perfectus("felix-utils", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("6.1.x.redhat-stable", "configadmin", "configadmin") using {  p =>
       perfectus("felix-configadmin", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("6.1.x.redhat-stable", "eventadmin/impl", "eventadmin") using {  p =>
@@ -457,7 +431,6 @@ object Main extends Helper {
       perfectus("felix-framework", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("6.1.x.redhat-stable", "framework.security", "framework.security") using {  p =>
@@ -472,28 +445,24 @@ object Main extends Helper {
       perfectus("felix-fileinstall", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("6.1.x.redhat-stable", "gogo/runtime", "gogo") using {  p =>
       perfectus("felix-gogo", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("6.1.x.redhat-stable", "scr", "scr") using {  p =>
       perfectus("felix-scr", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     felix("6.1.x.redhat-stable", "webconsole", "webconsole") using {  p =>
       perfectus("felix-webconsole", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     
@@ -518,28 +487,24 @@ object Main extends Helper {
       perfectus("aries-util", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.0.fuse-7-1-x-stable", "blueprint", "blueprint") using { p =>
       perfectus("aries-blueprint", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.0.fuse-7-1-x-stable", "jmx", "jmx") using {  p =>
       perfectus("aries-jmx", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.0.fuse-7-1-x-stable", "transaction", "transaction") using {  p =>
       perfectus("aries-transaction", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
      }
     
@@ -547,35 +512,30 @@ object Main extends Helper {
       perfectus("aries-util", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.1.fuse-7-2-x-stable", "blueprint", "blueprint") using { p =>
       perfectus("aries-blueprint", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.1.fuse-7-2-x-stable", "jmx", "jmx") using {  p =>
       perfectus("aries-jmx", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.1.fuse-7-2-x-stable", "transaction", "transaction") using {  p =>
       perfectus("aries-transaction", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
      }
     aries("1.0.1.fuse-7-2-x-stable", "proxy", "proxy") using {  p =>
       perfectus("aries-proxy", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
      }
 
@@ -584,35 +544,30 @@ object Main extends Helper {
       perfectus("aries-util", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.1.redhat-6-1-x-stable", "blueprint", "blueprint") using { p =>
       perfectus("aries-blueprint", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.1.redhat-6-1-x-stable", "jmx", "jmx") using {  p =>
       perfectus("aries-jmx", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.1.redhat-6-1-x-stable", "transaction", "transaction") using {  p =>
       perfectus("aries-transaction", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     aries("1.0.1.redhat-6-1-x-stable", "proxy", "proxy") using {  p =>
       perfectus("aries-proxy", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -620,7 +575,6 @@ object Main extends Helper {
       perfectus("aries-jpa", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -656,7 +610,6 @@ object Main extends Helper {
       p.mavenName("maven-3.0.2")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     
@@ -665,7 +618,6 @@ object Main extends Helper {
       p.mavenName("maven-3.0.2")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -674,7 +626,6 @@ object Main extends Helper {
       p.mavenName("maven-3.0.2")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -694,14 +645,12 @@ object Main extends Helper {
     }
     esb_features("4.5.0.fuse-7-1-x-stable") using { p =>
       perfectus("smx4-features", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
     }
     esb_features("4.5.0.fuse-7-2-x-stable") using { p =>
       perfectus("smx4-features", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
@@ -709,7 +658,6 @@ object Main extends Helper {
 
     esb_features("4.5.0.redhat-6-1-x-stable") using { p =>
       perfectus("smx4-features", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
@@ -727,7 +675,6 @@ object Main extends Helper {
     
     fuseenterprise("7.1.x.fuse-stable") using { p => 
       perfectus("fuseenterprise", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
@@ -735,7 +682,6 @@ object Main extends Helper {
     
     fuseenterprise("7.2.x.fuse-stable") using { p => 
       perfectus("fuseenterprise", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
@@ -743,7 +689,6 @@ object Main extends Helper {
 
     fuseenterprise("6.1.x.redhat-stable") using { p =>  
       // perfectus("fuseenterprise", p)
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
@@ -764,14 +709,12 @@ object Main extends Helper {
       perfectus("smx-utils", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     esb_utils("1.5.1.fuse-7-2-x-stable") using { p =>
       perfectus("smx-utils", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -779,7 +722,6 @@ object Main extends Helper {
       perfectus("smx-utils", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -806,7 +748,6 @@ object Main extends Helper {
       perfectus("smx4-specs", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     
@@ -814,7 +755,6 @@ object Main extends Helper {
       perfectus("smx4-specs", p) 
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -822,7 +762,6 @@ object Main extends Helper {
       perfectus("smx4-specs", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -838,7 +777,6 @@ object Main extends Helper {
       perfectus("smx-components", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
     
@@ -846,7 +784,6 @@ object Main extends Helper {
       perfectus("smx-components", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -854,7 +791,6 @@ object Main extends Helper {
       perfectus("smx-components", p)
       p.jdks("jdk7", "jdk6")
       p.labels=platformsFor71
-      p.addBuild(p.dualjdk)
       p.mavenName("maven-3.0.4")
     }
 
@@ -986,7 +922,6 @@ object Main extends Helper {
     val project = new Project("felix-" + name + "-" + branch,
 					          new Git("ssh://git@forge.fusesource.com/felix.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
-	project.dualjdk.maven.rootPom = comp + "/pom.xml"
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	project.mavenName("maven-3.0.2")
 	add(project)
@@ -996,7 +931,6 @@ object Main extends Helper {
     val project = new Project("aries-" + name + "-" + branch,
 					          new Git("ssh://git@forge.fusesource.com/aries.git", None, List(branch)))
 	project.builds.foreach(_.maven.rootPom = comp + "/pom.xml")
-	project.dualjdk.maven.rootPom = comp + "/pom.xml"
 	project.perfectus_tests.maven.rootPom = comp + "/pom.xml"
 	add(project)
   }

@@ -123,7 +123,6 @@ case class Project(val name:String, val scm:SCM) {
   val checkin = Build("checkin").junitPublisher(JUnitPublisher())
   val platform = Build("platform").junitPublisher(JUnitPublisher())
   val deploy = Build("deploy").timeout(30)   // we avoid taking the full build timeout value as the default
-  val dualjdk = Build("dualjdk").junitPublisher(JUnitPublisher())
   val perfectus_tests = Build("perfectus-tests").
                         parameters(Parameter("TAG", "tag or branch to execute against")).
                         junitPublisher(JUnitPublisher())
