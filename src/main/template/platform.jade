@@ -22,8 +22,7 @@ matrix-project
       values
         - for( label <- project.labels ) 
           string= label
-  combinationFilter
-    '!((jdk==&quot;openjdk6&quot; || jdk==&quot;openjdk7&quot;) &amp;&amp; (label != &quot;rhel&quot;))'
+  combinationFilter !((jdk==&quot;openjdk6&quot; || jdk==&quot;openjdk7&quot;) &amp;&amp; (label != &quot;rhel&quot;))
   builders
     'hudson.tasks.Maven'
       mavenName #{build.maven.name}
