@@ -238,9 +238,18 @@ object Main extends Helper {
     cxf("2.2.x-fuse").disable
     cxf("2.2.6-fuse").disable
     cxf("2.3.x-fuse").disable
-    cxf("2.4.x-fuse") using ( perfectus("cxf", _) ) 
-    cxf("2.5.x-fuse") using ( perfectus("cxf", _) )
-    cxf("2.4.2-fuse-00-xx") using ( perfectus("cxf", _) ) 
+    cxf("2.4.x-fuse") using { p =>
+      perfectus("cxf", p)
+      p.disable
+    }
+    cxf("2.5.x-fuse") using { p =>
+      perfectus("cxf", p)
+      p.disable
+    }
+    cxf("2.4.2-fuse-00-xx") using {p =>
+        perfectus("cxf", p)
+        p.disable
+    }
     
     //esbsystemtests
     esbsystemtests("kite-4.3.1") 
