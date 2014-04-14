@@ -124,11 +124,11 @@ object Main extends Helper {
       p.labels=platformsFor71; 
       p.mavenName("maven-3.0.4")
     }
-    activemq("5.6.x-fuse")
-    activemq("5.5.x-fuse")
+    activemq("5.6.x-fuse").disable
+    activemq("5.5.x-fuse").disable
     activemq("5.5.1.fuse-7-0-x-stable")
     activemq("5.5.1.fuse-7")
-    activemq("5.5.1-fuse")
+    activemq("5.5.1-fuse").disable
     activemq("5.4.x-fuse") using { p =>
       perfectus("activemq", p)
       p.disable
@@ -171,6 +171,7 @@ object Main extends Helper {
     camel("2.10.x-fuse") using { p =>
       perfectus("camel", p)
       p.mavenName("maven-3.0.2")
+      p.disable
     }
     camel("2.9.0.fuse-7-0-x-stable") using { p =>
       perfectus("camel", p)
@@ -179,12 +180,14 @@ object Main extends Helper {
     camel("2.9.x-fuse") using { p =>
       perfectus("camel", p)
       p.mavenName("maven-3.0.2")
+      p.disable
     }
     camel("2.8.x-fuse") using { p =>
       perfectus("camel", p)
       p.mavenName("maven-3.0.2")
+      p.disable
     }
-    camel("2.7.x-fuse")
+    camel("2.7.x-fuse").disable
     camel("2.6.x-fuse").disable
     camel("2.4.x-fuse").disable
     camel("2.2.x-fuse").disable 
@@ -226,6 +229,7 @@ object Main extends Helper {
     cxf("2.6.x-fuse") using { p =>
        perfectus("cxf", p)
        p.mavenName("maven-3.0.2")
+       p.disable
     }
     cxf("2.5.0.fuse-7-0-x-stable") using { p =>
        perfectus("cxf", p)
@@ -233,7 +237,7 @@ object Main extends Helper {
     }
     cxf("2.2.x-fuse").disable
     cxf("2.2.6-fuse").disable
-    cxf("2.3.x-fuse")
+    cxf("2.3.x-fuse").disable
     cxf("2.4.x-fuse") using ( perfectus("cxf", _) ) 
     cxf("2.5.x-fuse") using ( perfectus("cxf", _) )
     cxf("2.4.2-fuse-00-xx") using ( perfectus("cxf", _) ) 
@@ -245,9 +249,10 @@ object Main extends Helper {
     // Karaf Branches
     karaf("karaf-2.0.0-fuse").disable
     karaf("karaf-2.1.x-fuse").disable
-    karaf("karaf-2.2.x-fuse")
+    karaf("karaf-2.2.x-fuse").disable
     karaf("karaf-2.2.5-fuse") using { p =>
       p.deploy.timeout(90)
+      p.disable
     }
     karaf("2.2.5.fuse-7-0-x-stable") using { p =>
       p.deploy.timeout(90)
@@ -276,12 +281,30 @@ object Main extends Helper {
     karaf("karaf-trunk-fuse") using ( perfectus("karaf", _) ) 
     
     // Felix components
-    felix("4.4.1-fuse", "configadmin", "configadmin") using ( perfectus("felix-configadmin", _) )
-    felix("4.4.1-fuse", "eventadmin/impl", "eventadmin") using ( perfectus("felix-eventadmin", _) )
-    felix("4.4.1-fuse", "framework", "framework") using ( perfectus("felix-framework", _) )
-    felix("4.4.1-fuse", "framework.security", "framework.security") using ( perfectus("felix-framework-security", _) )
-    felix("4.4.1-fuse", "fileinstall", "fileinstall") using ( perfectus("felix-fileinstall", _) )
-    felix("4.4.1-fuse", "webconsole", "webconsole") using ( perfectus("felix-webconsole", _) )
+    felix("4.4.1-fuse", "configadmin", "configadmin") using { p =>
+      perfectus("felix-configadmin", p)
+      p.disable
+    }
+    felix("4.4.1-fuse", "eventadmin/impl", "eventadmin") using { p =>
+      perfectus("felix-eventadmin", p)
+      p.disable
+    }
+    felix("4.4.1-fuse", "framework", "framework") using { p =>
+      perfectus("felix-framework", p)
+      p.disable
+    }
+    felix("4.4.1-fuse", "framework.security", "framework.security") using { p =>
+      perfectus("felix-framework-security", p)
+      p.disable
+    }
+    felix("4.4.1-fuse", "fileinstall", "fileinstall") using { p =>
+      perfectus("felix-fileinstall", p)
+      p.disable
+    }
+    felix("4.4.1-fuse", "webconsole", "webconsole") using { p =>
+      perfectus("felix-webconsole", p)
+      p.disable
+    }
 
     felix("7.0.x-fuse", "configadmin", "configadmin")
     felix("7.0.x-fuse", "eventadmin/impl", "eventadmin")
@@ -472,12 +495,25 @@ object Main extends Helper {
     felix("fuse-trunk", "framework", "framework")
     felix("fuse-trunk", "fileinstall", "fileinstall")
 
-	// Aries components
-	aries("aries-0.3.x-fuse", "util", "util") using ( perfectus("aries-util", _) )
-	aries("aries-0.3.x-fuse", "blueprint", "blueprint") using ( perfectus("aries-blueprint", _) )
-	aries("aries-0.3.x-fuse", "jmx", "jmx") using ( perfectus("aries-jmx", _) )
-	aries("aries-0.3.x-fuse", "transaction", "transaction") using ( perfectus("aries-transaction", _) )
 
+
+	// Aries components
+	aries("aries-0.3.x-fuse", "util", "util") using { p =>
+    perfectus("aries-util",  p)
+    p.disable
+  }
+	aries("aries-0.3.x-fuse", "blueprint", "blueprint") using { p =>
+    perfectus("aries-blueprint", p)
+    p.disable
+  }
+	aries("aries-0.3.x-fuse", "jmx", "jmx") using { p =>
+    perfectus("aries-jmx", p)
+    p.disable
+  }
+	aries("aries-0.3.x-fuse", "transaction", "transaction") using { p =>
+    perfectus("aries-transaction", p)
+    p.disable
+  }
     aries("0.3.1.fuse-7-0-x-stable", "util", "util") using ( perfectus("aries-util", _) )
     aries("0.3.1.fuse-7-0-x-stable", "blueprint", "blueprint") using ( perfectus("aries-blueprint", _) )
     aries("0.3.1.fuse-7-0-x-stable", "jmx", "jmx") using ( perfectus("aries-jmx", _) )
@@ -592,14 +628,17 @@ object Main extends Helper {
     esb_nmr("nmr-1.5.1-fuse") using { p =>
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
+      p.disable
     }
     esb_nmr("nmr-1.5.2-fuse") using { p =>
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
+      p.disable
     }
     esb_nmr("nmr-1.6.0-fuse") using { p =>
       perfectus("nmr", p)
       p.mavenName("maven-3.0.2")
+      p.disable
     }
     esb_nmr("1.6.0.fuse-7-0-x-stable") using { p =>
       perfectus("nmr", p)
@@ -632,13 +671,20 @@ object Main extends Helper {
     smx4_features("trunk").disable
     smx4_features("features-4.2.0-fuse").disable
     smx4_features("features-4.3.0-fuse").disable
-    esb_features("features-4.3.1-fuse") 
-    esb_features("features-4.4.0-fuse") using ( perfectus("smx4-features", _) ) 
-    esb_features("features-4.4.1-fuse") using ( perfectus("smx4-features", _) )    
+    esb_features("features-4.3.1-fuse").disable
+    esb_features("features-4.4.0-fuse") using { p =>
+      perfectus("smx4-features", p)
+      p.disable
+    }
+    esb_features("features-4.4.1-fuse") using { p =>
+      perfectus("smx4-features", p)
+      p.disable
+    }
     esb_features("features-5.0.0-fuse") using { p =>
       perfectus("smx4-features", p)
-      p.mavenName("maven-3.0.2")
+      p.disable
     }
+
     esb_features("4.5.0.fuse-7-0-x-stable") using { p =>
       perfectus("smx4-features", p)
       p.mavenName("maven-3.0.2")
@@ -702,8 +748,14 @@ object Main extends Helper {
     smx_utils("trunk").disable
     smx_utils("utils-1.3.0-fuse").disable
     esb_utils("utils-1.4.x-fuse").disable
-    esb_utils("utils-1.5.0-fuse") using ( perfectus("smx-utils", _) ) 
-    esb_utils("utils-1.5.1-fuse") using ( perfectus("smx-utils", _) ) 
+    esb_utils("utils-1.5.0-fuse") using {p =>
+        perfectus("smx-utils", p)
+        p.disable
+    }
+    esb_utils("utils-1.5.1-fuse") using { p =>
+      perfectus("smx-utils", p)
+      p.disable
+    }
     esb_utils("1.5.1.fuse-7-0-x-stable") using ( perfectus("smx-utils", _) )
     esb_utils("1.5.1.fuse-7-1-x-stable") using { p =>
       perfectus("smx-utils", p) 
@@ -742,7 +794,10 @@ object Main extends Helper {
       p.mavenName("maven-3.0.4")
     }
     
-    esb_specs("specs-2.0.x-fuse") using ( perfectus("smx4-specs", _) )
+    esb_specs("specs-2.0.x-fuse") using { p =>
+        perfectus("smx4-specs", p)
+        p.disable
+    }
     esb_specs("2.0.0.fuse-7-0-x-stable") using ( perfectus("smx4-specs", _) )
     esb_specs("2.0.0.fuse-7-1-x-stable") using { p =>
       perfectus("smx4-specs", p) 
@@ -769,9 +824,18 @@ object Main extends Helper {
     esb_components("components-2010.01.0-fuse").disable
     esb_components("components-2010.02.0-fuse").disable
     esb_components("components-2011.01.0-fuse").disable
-    esb_components("components-2011.02.0-fuse") using ( perfectus("smx-components", _) ) 
-    esb_components("components-2011.02.1-fuse") using ( perfectus("smx-components", _) )
-    esb_components("components-2012.01.0-fuse") using ( perfectus("smx-components", _) )
+    esb_components("components-2011.02.0-fuse") using { p =>
+        perfectus("smx-components", p)
+        p.disable
+    }
+    esb_components("components-2011.02.1-fuse") using { p =>
+      perfectus("smx-components", p)
+      p.disable
+    }
+    esb_components("components-2012.01.0-fuse") using { p =>
+      perfectus("smx-components", p)
+      p.disable
+    }
     esb_components("2012.01.0.fuse-7-0-x-stable") using ( perfectus("smx-components", _) )
     esb_components("2012.01.0.fuse-7-1-x-stable") using { p =>
       perfectus("smx-components", p)
@@ -801,7 +865,7 @@ object Main extends Helper {
     servicemix3("3.3.1-fuse").timeout(2*60).disable
     servicemix3("3.4.0-fuse").timeout(2*60).disable
     servicemix3("3.5.0-fuse").timeout(2*60).disable
-    servicemix3("3.6.0-fuse").timeout(2*60)
+    servicemix3("3.6.0-fuse").timeout(2*60).disable
 
     fusecdc("master")
   }
