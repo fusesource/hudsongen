@@ -18,9 +18,9 @@ project
       failBuild false
   builders
     'hudson.tasks.Maven'
-      - if ( (build.maven.name.startsWith("maven-3")) && project.name.startsWith("activemq")) 
+      - if ((build.maven.name.startsWith("maven-3")) && project.name.startsWith("activemq")) 
         targets --settings ${HOME}/.m2/m3-settings.xml --show-version --batch-mode --fail-never  clean install #{build.maven.goalsArguments}
-      - if ( build.maven.name.startsWith("maven-3") && !project.name.startsWith("activemq"))
+      - else if ( build.maven.name.startsWith("maven-3") && !project.name.startsWith("activemq"))
         targets --settings ${HOME}/.m2/m3-settings.xml --show-version --batch-mode --fail-at-end  clean install #{build.maven.goalsArguments}
       - else
         targets --settings ${HOME}/.m2/m2-settings.xml --show-version --batch-mode --fail-at-end  clean install #{build.maven.goalsArguments}
