@@ -73,7 +73,7 @@ case class Project(val name:String, val scm:SCM) {
 
   var jvmOpts = "-Xmx1G -XX:MaxPermSize=256m"
   
-  var labels = List("ubuntu", "windows")
+  var labels = List("rhel", "windows")
   def labels(values:String*): this.type = { labels = List(values: _*); this}
   
   def timeout(value:Int): this.type = { 
