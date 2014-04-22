@@ -703,7 +703,7 @@ object Main extends Helper {
 
     aries("1.0.1.redhat-6-1-x-stable", "jpa", "jpa") using {  p =>
       perfectus("aries-jpa", p)
-      p.jdks("jdk6", "jdk7","openjdk6","openjdk7")
+      p.jdks("jdk7", "jdk6","openjdk6","openjdk7")
       p.labels=platformsList
       p.mavenName("maven-3.0.5")
     }
@@ -742,7 +742,7 @@ object Main extends Helper {
 
     aries("1.0.1.redhat-6-1-x-patch", "jpa", "jpa") using {  p =>
       perfectus("aries-jpa", p)
-      p.jdks("jdk6", "jdk7","openjdk6","openjdk7")
+      p.jdks("jdk7", "jdk6","openjdk6","openjdk7")
       p.labels=platformsList
       p.mavenName("maven-3.0.5")
     }
