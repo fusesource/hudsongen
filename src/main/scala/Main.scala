@@ -84,6 +84,13 @@ object Main extends Helper {
       p.deploy.timeout(50)
       p.ircNotify(IrcNotify("hawtio"), p.checkin, p.deploy)
     }
+
+    add(Project("hawtio-1.2.0.redhat-6-1-x-patch", new GitHub("hawtio", "hawtio"))).using { p =>
+      p.git(_.branches("1.2.0.redhat-6-1-x-patch"))
+      p.jdks("jdk6", "jdk7")
+      p.timeout(60)
+      p.mavenName("maven-3.0.5")
+    }
     
     // ActiveMQ Apache Branches
     add(Project("activemq-trunk", new GitHub("apache", "activemq"))).using { p =>
