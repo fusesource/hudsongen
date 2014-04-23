@@ -87,7 +87,7 @@ object Main extends Helper {
 
     add(Project("hawtio-1.2.0.redhat-6-1-x-patch", new GitHub("hawtio", "hawtio"))).using { p =>
       p.git(_.branches("1.2.0.redhat-6-1-x-patch"))
-      p.jdks("jdk6", "jdk7")
+      p.jdks("jdk6", "jdk7","openjdk6","openjdk7")
       p.timeout(60)
       p.mavenName("maven-3.0.5")
     }
@@ -941,6 +941,14 @@ object Main extends Helper {
       p.mavenName("maven-3.0.5")
     }
 
+    esb_utils("1.6.0.redhat-6-1-x-patch") using { p =>
+      perfectus("smx-utils", p)
+      p.jdks("jdk6", "jdk7", "openjdk6", "openjdk7")
+      p.labels=platformsList
+      p.mavenName("maven-3.0.5")
+    }
+
+
     esb_utils("1.6.0.redhat-6-1-x-checkin") using { p =>
       perfectus("smx-utils", p)
       p.jdks("jdk6", "jdk7", "openjdk6", "openjdk7")
@@ -996,6 +1004,14 @@ object Main extends Helper {
       p.labels=platformsList
       p.mavenName("maven-3.0.5")
     }
+
+    esb_specs("2.3.0.redhat-6-1-x-patch") using { p =>
+      perfectus("smx4-specs", p)
+      p.jdks("jdk6", "jdk7","openjdk6","openjdk7")
+      p.labels=platformsList
+      p.mavenName("maven-3.0.5")
+    }
+
 
     esb_components("components-2009.01.x").disable
     esb_components("components-2010.01.0-fuse").disable
