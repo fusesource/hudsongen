@@ -85,13 +85,14 @@ object Main extends Helper {
       p.ircNotify(IrcNotify("hawtio"), p.checkin, p.deploy)
     }
 
-    add(Project("hawtio-1.2.0.redhat-6-1-x-patch", new GitHub("hawtio", "hawtio"))).using { p =>
-      p.git(_.branches("1.2.0.redhat-6-1-x-patch"))
-      p.jdks("jdk6", "jdk7","openjdk6","openjdk7")
-      p.timeout(60)
-      p.mavenName("maven-3.0.5")
+    // hawtio product branches
+     hawtio("1.2.0.redhat-6-1-x-patch") using {
+      p => p.jdks("jdk6", "jdk7","openjdk6","openjdk7");
+        p.labels=platformsList;
+        p.mavenName("maven-3.0.5")
     }
-    
+
+
     // ActiveMQ Apache Branches
     add(Project("activemq-trunk", new GitHub("apache", "activemq"))).using { p =>
       p.git(_.branches("trunk"))
@@ -1190,6 +1191,15 @@ object Main extends Helper {
 	project.mavenName("maven-3.0.2")
 	add(project)
   }
+
+  def hawtio(branch:String) =  {
+    val project = new Project("hawtio-"+branch, new Git("ssh://git@forge.fusesource.com/hawtio.git", None, List(branch)))
+    project.timeout(60)
+    project.deploy.timeout(60)
+    project.mavenName("maven-3.0.5")
+    add(project)
+  }
+
 
   def aries(branch:String, comp:String, name:String) = {
     val project = new Project("aries-" + name + "-" + branch,
