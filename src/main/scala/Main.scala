@@ -17,31 +17,6 @@ object Main extends Helper {
 
     github("fusesource", "wikitext").git(_.branches("origin"))
 
-    github("scalate", "scalate").using { p =>
-      p.mavenName("maven-3.0.2")
-      // Run the build on jdk 5 and 6 since the core should be JDK 1.5 compatible,
-      // but we also want to test the java 6 features like Jersey integration.
-      p.jdks("jdk6", "jdk5")
-      p.checkin.maven.profiles = List("m2", "distro")
-      p.deploy.maven.profiles = List("m2", "distro")
-      p.platform.maven.profiles = List("m2", "distro")
-      p.deploy.timeout(45)
-      p.ircNotify(IrcNotify("scalate"), p.checkin, p.deploy)
-    }
-    
-    add(Project("scalate-scala_next", new GitHub("scalate", "scalate"))).using { p =>
-      p.git(_.branches("scala_next"))
-      p.mavenName("maven-3.0.2")
-      // Run the build on jdk 5 and 6 since the core should be JDK 1.5 compatible,
-      // but we also want to test the java 6 features like Jersey integration.
-      p.jdks("jdk6", "jdk5")
-      p.checkin.maven.profiles = List("m2", "distro")
-      p.deploy.maven.profiles = List("m2", "distro")
-      p.platform.maven.profiles = List("m2", "distro")
-      p.deploy.timeout(45)
-      p.ircNotify(IrcNotify("scalate"), p.checkin, p.deploy)
-    }
-
     github("fusesource", "fuse").using { p =>
       p.mavenName("maven-3.0.2")
       p.jdks("jdk6")
