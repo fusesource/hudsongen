@@ -1,5 +1,7 @@
 # HudsonGen
 
+## Please note: HudsonGen is now retired, we are now managing jobs by using the SCM Sync Configuration plugin.  
+
 This project generates most of the Hudson configuration files for the [FuseSource](http://fusesource.com/) [open source projects](http://fusesource.com/forge) using the [Scalate template engine](http://scalate.fusesource.org/).
 
 If you want to automatically create your Hudson configuration files for each of your projects using templates you might want to fork and adapt this project.
